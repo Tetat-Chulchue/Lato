@@ -40,10 +40,7 @@ public class test {
         data.put("first", "Ada");
         data.put("last", "Lovelace");
         data.put("born", 1815);
-        //asynchronously write data
         ApiFuture<WriteResult> result = docRef.set(data);
-        // ...
-        // result.get() blocks on response
         System.out.println("Update time : " + result.get().getUpdateTime());
     }
 }
