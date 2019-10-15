@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class test {
     public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, ExecutionException {
-        FileInputStream serviceAccount = new FileInputStream("lato-744d4-firebase-adminsdk-cjt1k-e7c29ad451.json");
+        FileInputStream serviceAccount = new FileInputStream("./test.json");
 
         FirebaseOptions options = new FirebaseOptions.Builder()
         .setCredentials(GoogleCredentials.fromStream(serviceAccount))
