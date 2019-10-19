@@ -8,17 +8,25 @@ package com.mycompany.lato;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
+
+// import for internet conection ----------
+// import java.net.MalformedURLException;
+// import java.net.URL;
+// import java.net.URLConnection;
+// import for internet conection ----------
+
 /**
  *
  * @author TanawatChanhom
  */
 public class main {
+
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
 //        Post test_post = new Post(); 
 //        test_post.test();
 //        
 //        Get test_get = new Get();
-//        test_get.test("users", "alovelace3");
+//        test_get.test("users", "alovelace2");
 //        
 //        Index test_index = new Index();
 //        test_index.test();
@@ -28,5 +36,18 @@ public class main {
 //        
 //        Delete test_delete = new Delete();
 //        test_delete.test();
+
+        // Try connecting to the internet ------------------------------
+//        try {
+//            URL url = new URL("http://www.google.com");
+//            URLConnection connection = url.openConnection();
+//            connection.connect();
+//            System.out.println("Internet is connected");
+//        } catch (MalformedURLException e) {
+//            System.out.println("Internet is not connected");
+//        } catch (IOException e) {
+//            System.out.println("Internet is not connected");
+//        }
+        // Try connecting to the internet ------------------------------
     }
 }
