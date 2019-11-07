@@ -25,7 +25,7 @@ public class main {
 
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
         Treasurer treasurer = new Treasurer();
-        treasurer.login("EIEI", "1234");
+        treasurer.login("lato@dev.com", "admin1234");
 //        Post test_post = new Post(); 
 //        test_post.test();
 //        
