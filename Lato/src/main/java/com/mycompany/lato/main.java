@@ -5,6 +5,8 @@
  */
 package com.mycompany.lato;
 
+import com.mycompany.lato.model.Treasurer;
+
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
@@ -22,6 +24,8 @@ import java.util.concurrent.ExecutionException;
 public class main {
 
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
+        Treasurer treasurer = new Treasurer();
+        treasurer.login("lato@dev.com", "admin1234");
 //        Post test_post = new Post(); 
 //        test_post.test();
 //        

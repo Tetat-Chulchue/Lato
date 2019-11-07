@@ -1,5 +1,6 @@
 /bin/
-/Lato/lato/src/main/target
+Lato/src/main/target
+Lato/src/target
 .idea/libraries/
 
 *.class
