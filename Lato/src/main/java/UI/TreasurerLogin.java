@@ -1,13 +1,21 @@
 package UI;
 
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
-public class TreasurerLogin {
+
+public class TreasurerLogin implements ComponentListener {
+//    Config ------->
+    private int winW = 459;
+    private int winH = 700;
+//    Config ------->
+
     private JFrame fr;
     private JPanel P1, P2, P3, boxContainer, boxUser, boxPass;
     private JButton btn1;
     private JTextField TF1, TF2;
     private Label LB1, userText, passText;
+
 
     public void init() {
         fr = new JFrame("TreasurerLogin");
@@ -51,10 +59,14 @@ public class TreasurerLogin {
         fr.add(P3);
 
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.setPreferredSize(new Dimension(459, 700));
+        fr.setPreferredSize(new Dimension(winW, winH));
         fr.setVisible(true);
-        fr.setResizable(false);
+//        fr.setResizable(false);
         fr.pack();
+
+//        Listener --------------------------->
+        fr.getContentPane().addComponentListener(this);
+//        Listener --------------------------->
 
 //        Style --------------------------->
 
@@ -85,5 +97,27 @@ public class TreasurerLogin {
     public static void main(String[] args) {
         TreasurerLogin test = new TreasurerLogin();
         test.init();
+    }
+
+    @Override
+    public void componentResized(ComponentEvent componentEvent) {
+        LB1.setLocation((fr.getWidth()/2)-(LB1.getWidth()/2), 120);
+        btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 97);
+        boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 80);
+    }
+
+    @Override
+    public void componentMoved(ComponentEvent componentEvent) {
+
+    }
+
+    @Override
+    public void componentShown(ComponentEvent componentEvent) {
+
+    }
+
+    @Override
+    public void componentHidden(ComponentEvent componentEvent) {
+
     }
 }
