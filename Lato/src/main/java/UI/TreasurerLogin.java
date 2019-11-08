@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class TreasurerLogin implements ComponentListener {
+public class TreasurerLogin implements ComponentListener, ActionListener {
 //    Config ------->
     private int winW = 459;
     private int winH = 700;
@@ -51,6 +51,7 @@ public class TreasurerLogin implements ComponentListener {
 
         P3.setLayout(null);
         P3.add(btn1);
+        btn1.addActionListener(this);
         P3.setBackground(new Color(39, 70, 68));
 
         fr.setLayout(new GridLayout(3, 1));
@@ -119,5 +120,19 @@ public class TreasurerLogin implements ComponentListener {
     @Override
     public void componentHidden(ComponentEvent componentEvent) {
 
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(this.btn1)) {
+            if (TF1.getText().equals("taeza69") && TF2.getText().equals("123456")) {
+                System.exit(0);
+            } else {
+                int n = JOptionPane.showConfirmDialog(null,
+                        "รหัสผิดไอ้สัด",
+                        "Error",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+            }
+        }
     }
 }
