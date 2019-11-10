@@ -1,9 +1,13 @@
 package UI;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.*;
 
-public class Login {
+public class Login implements ActionListener {
     private JFrame fr;
     private JPanel P1, P2, P3;
     private JButton btn1;
@@ -17,9 +21,11 @@ public class Login {
         P2 = new JPanel();
 //        P3 = new JPanel();
         btn1 = new JButton("Treasurer");
+        btn1.addActionListener(this);
         btn1.setFont(new Font("Serif", Font.PLAIN, 50));
         btn2 = new JButton("User");
         btn2.setFont(new Font("Serif", Font.PLAIN, 50));
+        btn2.addActionListener(this);
 
         jLabel = new JLabel("LATO", SwingConstants.CENTER );
         jLabel.setVerticalAlignment(SwingConstants.CENTER);
@@ -54,6 +60,16 @@ public class Login {
     public static void main(String[] args) {
         Login test = new Login();
         test.init();
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(this.btn1)) {
+            TreasurerLogin UI = new TreasurerLogin();
+            UI.init();
+            fr.setVisible(false);
+        } else if (e.getSource().equals(this.btn2)) {
+            System.exit(0);
+        }
     }
 }
 
