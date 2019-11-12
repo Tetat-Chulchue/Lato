@@ -70,7 +70,6 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
 //        Listener --------------------------->
 
 //        Style --------------------------->
-
         LB1.setBounds(0, 0, 188, 60);
         LB1.setLocation((fr.getWidth()/2)-(LB1.getWidth()/2), 120);
         LB1.setFont(new Font("SansSerif", Font.PLAIN, 70));
@@ -91,7 +90,6 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         userText.setForeground(new Color(255, 203, 155));
         passText.setBackground(new Color(39, 70, 68));
         passText.setForeground(new Color(255, 203, 155));
-
 //        Style --------------------------->
     }
 

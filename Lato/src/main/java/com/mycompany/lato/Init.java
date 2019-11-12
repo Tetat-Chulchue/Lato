@@ -11,18 +11,15 @@ import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 /**
  *
  * @author Tanawat Chanhom
  */
 public class Init {
-    public Firestore test() throws FileNotFoundException, IOException {
-        FileInputStream serviceAccount = new FileInputStream("./test.json");
-
+    public Firestore initializeApp() throws IOException {
+        FileInputStream serviceAccount = new FileInputStream("./serviceAccount.json");
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                 .setDatabaseUrl("https://lato-744d4.firebaseio.com")

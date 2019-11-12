@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
 public class Delete {
     public void test() throws IOException, InterruptedException, ExecutionException {
         Init gg = new Init();
-        Firestore db = gg.test();
+        Firestore db = gg.initializeApp();
         
         ApiFuture<WriteResult> writeResult = db.collection("users").document("alovelace3").delete();
         // ...

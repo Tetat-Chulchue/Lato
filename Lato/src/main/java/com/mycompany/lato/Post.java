@@ -19,14 +19,18 @@ import java.util.concurrent.ExecutionException;
 public class Post {
     public void test() throws IOException, InterruptedException, ExecutionException {
         Init gg = new Init();
-        Firestore db = gg.test();
-        
-        DocumentReference docRef = db.collection("users").document("alovelace3");
-        Map<String, Object> data = new HashMap<>();
-        data.put("first", "Ada");
-        data.put("last", "Lovelace");
-        data.put("born", 1815);
-        ApiFuture<WriteResult> result = docRef.set(data);
-        System.out.println("Update time : " + result.get().getUpdateTime());
+        Firestore db = gg.initializeApp();
+
+        for (int i = 1; i < 10; i++) {
+            Map<String, Object> data = new HashMap<>();
+            data.put("SID", 6107000+i);
+            data.put("firstName", "Ada");
+            data.put("lastName", "Lovelace");
+            data.put("amount", 99999);
+            data.put("createAt", "xx-xx-xxxx");
+            data.put("updateAt", "xx-xx-xxxx");
+            ApiFuture<DocumentReference> addedDocRef = db.collection("Table").add(data);
+            System.out.println("Added document with ID: " + addedDocRef.get().getId());
+        }
     };
 }

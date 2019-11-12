@@ -22,7 +22,7 @@ public class Update {
 
     public void test() throws IOException, InterruptedException, ExecutionException {
         Init gg = new Init();
-        Firestore db = gg.test();
+        Firestore db = gg.initializeApp();
 
         Map<String, Object> update = new HashMap<>();
         update.put("born", 1830);
