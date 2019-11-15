@@ -110,7 +110,11 @@ public class TreasurerDashboard implements ActionListener {
 
         Table = new JPanel();
         model = new DefaultTableModel();
-        table = new JTable(model);
+        table = new JTable(model) {
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         scrollPane = new JScrollPane(table);
 
         model.setColumnIdentifiers(columnName);
@@ -226,6 +230,7 @@ public class TreasurerDashboard implements ActionListener {
         Amount_Debt_Text.setForeground(new Color(255, 203, 155));
         Amount_Debt.setFont(new Font("SansSerif", Font.PLAIN, 35));
         Amount_Debt.setForeground(new Color(255, 106, 68));
+        Table.setForeground(new Color(255, 106, 68));
 
         SID.setForeground(new Color(255, 203, 155));
         First_Name.setForeground(new Color(255, 203, 155));
