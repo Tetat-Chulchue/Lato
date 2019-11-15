@@ -62,14 +62,14 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fr.setPreferredSize(new Dimension(winW, winH));
         fr.setVisible(true);
-//        fr.setResizable(false);
+        fr.setResizable(false);
         fr.pack();
 
-//        Listener --------------------------->
+        // Listener --------------------------->
         fr.getContentPane().addComponentListener(this);
-//        Listener --------------------------->
+        // Listener --------------------------->
 
-//        Style --------------------------->
+        // Style --------------------------->
         LB1.setBounds(0, 0, 188, 60);
         LB1.setLocation((fr.getWidth()/2)-(LB1.getWidth()/2), 120);
         LB1.setFont(new Font("SansSerif", Font.PLAIN, 70));
@@ -90,7 +90,7 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         userText.setForeground(new Color(255, 203, 155));
         passText.setBackground(new Color(39, 70, 68));
         passText.setForeground(new Color(255, 203, 155));
-//        Style --------------------------->
+        // Style --------------------------->
     }
 
     public static void main(String[] args) {
@@ -121,16 +121,8 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(this.btn1)) {
-            if (TF1.getText().equals("taeza69") && TF2.getText().equals("123456")) {
-                System.exit(0);
-            } else {
-                int n = JOptionPane.showConfirmDialog(null,
-                        "รหัสผิดไอ้สัด",
-                        "Error",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE);
-            }
+        if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
+
         }
     }
 }
