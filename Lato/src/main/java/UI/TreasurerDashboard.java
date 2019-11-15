@@ -187,6 +187,13 @@ public class TreasurerDashboard implements ActionListener {
 
 //        BTN Listener --------------------------->
         BTN_Pay.addActionListener(this);
+        BTN_Add_Payment.addActionListener(this);
+        BTN_Withdraw.addActionListener(this);
+        BTN_Log.addActionListener(this);
+
+        BTN_Add.addActionListener(this);
+        BTN_Update.addActionListener(this);
+        BTN_Delete.addActionListener(this);
 //        BTN Listener --------------------------->
 
 //        Style --------------------------->
@@ -213,11 +220,17 @@ public class TreasurerDashboard implements ActionListener {
         if (e.getSource().equals(this.BTN_Pay)) { //Button Pay
            this.addData("test",61070999, "test", "test", 900, "xx-xx-xxxx", "xx-xx-xxxx");
         } else if (e.getSource().equals(this.BTN_Add_Payment)) { //Button Add Payment
-
+            this.Amount_Student_Text.setText("Add Payment");
         } else if (e.getSource().equals(this.BTN_Withdraw)) { //Button Withdraw
-
+            this.Amount_Student_Text.setText("Withdraw");
         } else if (e.getSource().equals(this.BTN_Log)) { //Button See log
-
+            this.Amount_Student_Text.setText("Log");
+        } else if (e.getSource().equals(this.BTN_Add)) { //Button Add
+            this.Amount_Student_Text.setText("Add");
+        } else if (e.getSource().equals(this.BTN_Update)) { //Button Update
+            this.Amount_Student_Text.setText("Update");
+        } else if (e.getSource().equals(this.BTN_Delete)) { //Button Delete
+            this.Amount_Student_Text.setText("Delete");
         }
     }
 
