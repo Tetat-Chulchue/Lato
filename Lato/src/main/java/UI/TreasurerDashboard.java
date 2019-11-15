@@ -20,7 +20,6 @@ public class TreasurerDashboard implements ActionListener {
     private int winH = 885;
     private String[] columnName = {
             "No.",
-//            "UUID",
             "SID",
             "First Name",
             "Last Name",
@@ -197,17 +196,62 @@ public class TreasurerDashboard implements ActionListener {
 //        BTN Listener --------------------------->
 
 //        Style --------------------------->
-//        Bar.setBackground(new Color(39, 70, 68));
-//        Bar_BTN.setBackground(new Color(39, 70, 68));
-//        Bar_Forms.setBackground(new Color(39, 70, 68));
-//        Bar_Lable_Top.setBackground(new Color(39, 70, 68));
-//        Bar_BTN_Button.setBackground(new Color(39, 70, 68));
+        Bar.setBackground(new Color(39, 70, 68));
+        Bar_BTN.setBackground(new Color(39, 70, 68));
+        Bar_Forms.setBackground(new Color(39, 70, 68));
+        Bar_Lable_Top.setBackground(new Color(39, 70, 68));
+        Bar_BTN_Button.setBackground(new Color(39, 70, 68));
+        Amount_Student_Container.setBackground(new Color(39, 70, 68));
+        Amount_Student_Panel.setBackground(new Color(39, 70, 68));
+        Amount_Money_Container.setBackground(new Color(39, 70, 68));
+        Amount_Money_Panel.setBackground(new Color(39, 70, 68));
+        Amount_Debt_Container.setBackground(new Color(39, 70, 68));
+        Amount_Debt_Panel.setBackground(new Color(39, 70, 68));
+        Infor_Forms.setBackground(new Color(39, 70, 68));
+        Infor_Forms_Top.setBackground(new Color(39, 70, 68));
+        Infor_Forms_Buttom.setBackground(new Color(39, 70, 68));
+        Infor_Forms_Buttom_Left.setBackground(new Color(39, 70, 68));
+        Infor_Forms_Buttom_Right.setBackground(new Color(39, 70, 68));
+        BTN_Action.setBackground(new Color(39, 70, 68));
 
-        Table.setBackground(Color.blue);
-
+        Amount_Student_Text.setFont(new Font("SansSerif", Font.PLAIN, 17));
+        Amount_Student_Text.setForeground(new Color(255, 203, 155));
         Amount_Student.setFont(new Font("SansSerif", Font.PLAIN, 35));
+        Amount_Student.setForeground(new Color(68, 249, 255));
+        Amount_Money_Text.setFont(new Font("SansSerif", Font.PLAIN, 17));
+        Amount_Money_Text.setForeground(new Color(255, 203, 155));
         Amount_Money.setFont(new Font("SansSerif", Font.PLAIN, 35));
+        Amount_Money.setForeground(new Color(87, 255, 68));
+        Amount_Debt_Text.setFont(new Font("SansSerif", Font.PLAIN, 17));
+        Amount_Debt_Text.setForeground(new Color(255, 203, 155));
         Amount_Debt.setFont(new Font("SansSerif", Font.PLAIN, 35));
+        Amount_Debt.setForeground(new Color(255, 106, 68));
+
+        SID.setForeground(new Color(255, 203, 155));
+        First_Name.setForeground(new Color(255, 203, 155));
+        Last_Name.setForeground(new Color(255, 203, 155));
+
+        BTN_Pay.setBackground(new Color(68, 118, 255));
+        BTN_Add_Payment.setBackground(new Color(68, 118, 255));
+        BTN_Withdraw.setBackground(new Color(68, 118, 255));
+        BTN_Log.setBackground(new Color(68, 118, 255));
+        BTN_Add.setBackground(new Color(68, 118, 255));
+        BTN_Update.setBackground(new Color(87, 255, 68));
+        BTN_Delete.setBackground(new Color(255, 106, 68));
+
+        SID_Field.setBackground(new Color(96, 106, 106));
+        SID_Field.setForeground(new Color(255, 203, 155));
+        First_Name_Field.setBackground(new Color(96, 106, 106));
+        First_Name_Field.setForeground(new Color(255, 203, 155));
+        Last_Name_Field.setBackground(new Color(96, 106, 106));
+        Last_Name_Field.setForeground(new Color(255, 203, 155));
+
+        table.getTableHeader().setBackground(new Color(16, 100, 102));
+        table.getTableHeader().setForeground(new Color(255, 203, 155));
+        table.setFont(new Font("SansSerif", Font.PLAIN, 15));
+        table.setRowHeight(24);
+        table.setBackground(new Color(16, 100, 102));
+        table.setForeground(new Color(255, 203, 155));
 //        Style --------------------------->
     }
 
@@ -218,23 +262,26 @@ public class TreasurerDashboard implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.BTN_Pay)) { //Button Pay
-           this.addData("test",61070999, "test", "test", 900, "xx-xx-xxxx", "xx-xx-xxxx");
+            for (int i = 1; i <= 100; i++) {
+                String test = String.format("61070%03d", i);
+                this.addData(Integer.parseInt(test), "test", "test", i, "xx-xx-xxxx", "xx-xx-xxxx");
+            }
         } else if (e.getSource().equals(this.BTN_Add_Payment)) { //Button Add Payment
-            this.Amount_Student_Text.setText("Add Payment");
+
         } else if (e.getSource().equals(this.BTN_Withdraw)) { //Button Withdraw
-            this.Amount_Student_Text.setText("Withdraw");
+
         } else if (e.getSource().equals(this.BTN_Log)) { //Button See log
-            this.Amount_Student_Text.setText("Log");
+
         } else if (e.getSource().equals(this.BTN_Add)) { //Button Add
-            this.Amount_Student_Text.setText("Add");
+
         } else if (e.getSource().equals(this.BTN_Update)) { //Button Update
-            this.Amount_Student_Text.setText("Update");
+
         } else if (e.getSource().equals(this.BTN_Delete)) { //Button Delete
-            this.Amount_Student_Text.setText("Delete");
+
         }
     }
 
-    public void addData(String uuid, int SID, String FN, String LN, double AM, String crateAt, String updateAt) { // Add Data to Table
+    public void addData(int SID, String FN, String LN, double AM, String crateAt, String updateAt) { // Add Data to Table
         model.addRow(new Object[] {table.getRowCount()+1, SID, FN, LN, AM, crateAt, updateAt});
     }
 
@@ -252,7 +299,6 @@ public class TreasurerDashboard implements ActionListener {
                 );
             }
             this.addData(
-                (String) data.get("uuid"),
                 Integer.parseInt((String) data.get("SID")),
                 (String) data.get("firstName"),
                 (String) data.get("lastName"),
