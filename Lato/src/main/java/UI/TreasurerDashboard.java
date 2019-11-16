@@ -289,7 +289,9 @@ public class TreasurerDashboard implements ActionListener {
         } else if (e.getSource().equals(this.BTN_Add_Payment)) { //Button Add Payment
 
         } else if (e.getSource().equals(this.BTN_Withdraw)) { //Button Withdraw
-
+            Withdraw UI = new Withdraw();
+            UI.init(fr);
+            fr.setVisible(false);
         } else if (e.getSource().equals(this.BTN_Log)) { //Button See log
             TreasurerLog UI = new TreasurerLog();
             UI.init();
