@@ -85,9 +85,9 @@ public class Withdraw implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(BTN_Confirm)) {
+        if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
 
-        } else if (e.getSource().equals(BTN_Cancel)) {
+        } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
             OtherFR.setVisible(true);
             fr.dispose();
         }
