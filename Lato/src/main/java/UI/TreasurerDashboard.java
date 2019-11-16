@@ -58,7 +58,7 @@ public class TreasurerDashboard implements ActionListener {
             SID,
             First_Name,
             Last_Name
-        ;
+    ;
     private JButton BTN_Pay, BTN_Add_Payment, BTN_Withdraw, BTN_Log, BTN_Add, BTN_Update, BTN_Delete;
     private DefaultTableModel model;
     private JTable table;
@@ -80,7 +80,7 @@ public class TreasurerDashboard implements ActionListener {
         Amount_Money_Panel = new JPanel();
         Amount_Debt_Container = new JPanel();
         Amount_Debt_Panel = new JPanel();
-        Amount_Student_Text = new JLabel("Amount student");
+        Amount_Student_Text = new JLabel("Amount Student");
         Amount_Student = new JLabel("9999999");
         Amount_Money_Text = new JLabel("Amount Money");
         Amount_Money = new JLabel("9999999");
@@ -150,7 +150,7 @@ public class TreasurerDashboard implements ActionListener {
         Bar_BTN_Button.add(BTN_Withdraw);
         Bar_BTN_Button.add(BTN_Log);
 
-        Bar_Forms.setLayout(new GridLayout(2, 1));
+        Bar_Forms.setLayout(new BorderLayout());
         Infor_Forms.setLayout(new GridLayout(2, 1));
         Infor_Forms_Top.setLayout(new GridLayout(2, 1));
         Infor_Forms_Top.add(SID);
@@ -170,8 +170,8 @@ public class TreasurerDashboard implements ActionListener {
         BTN_Action.add(BTN_Add);
         BTN_Action.add(BTN_Update);
         BTN_Action.add(BTN_Delete);
-        Bar_Forms.add(Infor_Forms);
-        Bar_Forms.add(BTN_Action);
+        Bar_Forms.add(Infor_Forms, BorderLayout.CENTER);
+        Bar_Forms.add(BTN_Action, BorderLayout.SOUTH);
 
         Table.setLayout(new GridLayout(1, 1));
         Table.add(scrollPane);
@@ -183,7 +183,7 @@ public class TreasurerDashboard implements ActionListener {
 //        this.preload();
 
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        fr.setPreferredSize(new Dimension(winW, winH));
+        fr.setPreferredSize(new Dimension(winW, winH));
         fr.setVisible(true);
 //        fr.setResizable(false);
         fr.pack();
@@ -237,12 +237,26 @@ public class TreasurerDashboard implements ActionListener {
         Last_Name.setForeground(new Color(255, 203, 155));
 
         BTN_Pay.setBackground(new Color(68, 118, 255));
+        BTN_Pay.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        BTN_Pay.setForeground(new Color(16, 100, 102));
         BTN_Add_Payment.setBackground(new Color(68, 118, 255));
+        BTN_Add_Payment.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        BTN_Add_Payment.setForeground(new Color(16, 100, 102));
         BTN_Withdraw.setBackground(new Color(68, 118, 255));
+        BTN_Withdraw.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        BTN_Withdraw.setForeground(new Color(16, 100, 102));
         BTN_Log.setBackground(new Color(68, 118, 255));
+        BTN_Log.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        BTN_Log.setForeground(new Color(16, 100, 102));
         BTN_Add.setBackground(new Color(68, 118, 255));
+        BTN_Add.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        BTN_Add.setForeground(new Color(16, 100, 102));
         BTN_Update.setBackground(new Color(87, 255, 68));
+        BTN_Update.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        BTN_Update.setForeground(new Color(16, 100, 102));
         BTN_Delete.setBackground(new Color(255, 106, 68));
+        BTN_Delete.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        BTN_Delete.setForeground(new Color(16, 100, 102));
 
         SID_Field.setBackground(new Color(96, 106, 106));
         SID_Field.setForeground(new Color(255, 203, 155));
@@ -251,8 +265,10 @@ public class TreasurerDashboard implements ActionListener {
         Last_Name_Field.setBackground(new Color(96, 106, 106));
         Last_Name_Field.setForeground(new Color(255, 203, 155));
 
+        table.getColumnModel().getColumn(0).setPreferredWidth(0);
         table.getTableHeader().setBackground(new Color(16, 100, 102));
         table.getTableHeader().setForeground(new Color(255, 203, 155));
+        table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 13));
         table.setFont(new Font("SansSerif", Font.PLAIN, 15));
         table.setRowHeight(24);
         table.setBackground(new Color(16, 100, 102));
@@ -267,16 +283,16 @@ public class TreasurerDashboard implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.BTN_Pay)) { //Button Pay
-            for (int i = 1; i <= 100; i++) {
-                String test = String.format("61070%03d", i);
-                this.addData(Integer.parseInt(test), "test", "test", i, "xx-xx-xxxx", "xx-xx-xxxx");
-            }
+            Pay UI = new Pay();
+            UI.init(fr);
+            fr.setVisible(false);
         } else if (e.getSource().equals(this.BTN_Add_Payment)) { //Button Add Payment
 
         } else if (e.getSource().equals(this.BTN_Withdraw)) { //Button Withdraw
 
         } else if (e.getSource().equals(this.BTN_Log)) { //Button See log
-
+            TreasurerLog UI = new TreasurerLog();
+            UI.init();
         } else if (e.getSource().equals(this.BTN_Add)) { //Button Add
 
         } else if (e.getSource().equals(this.BTN_Update)) { //Button Update
