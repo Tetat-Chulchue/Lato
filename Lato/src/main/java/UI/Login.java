@@ -65,7 +65,7 @@ public class Login implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) {
             TreasurerLogin UI = new TreasurerLogin();
-            UI.init();
+            UI.init(fr);
             fr.setVisible(false);
         } else if (e.getSource().equals(this.btn2)) {
             System.exit(0);
