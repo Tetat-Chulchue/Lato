@@ -11,7 +11,31 @@ public class Treasurer {
     protected String lastname;
     protected String studentId;
 
-    public static boolean login(String email, String password) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public static String login(String email, String password) {
         String payload = "\"email=" + email + "&password=" + password + "\"";
         System.out.println(payload);
         String command = "curl -X POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCNnfqtppF_25UEmRc_ezyHX4IdyauoR0c -H 'Content-Type: application/json' --data "+payload;
@@ -22,10 +46,10 @@ public class Treasurer {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             Gson gson = new Gson();
             Response res = gson.fromJson(reader, Response.class);
-            return res.isRegistered();
+            return res.getEmail();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
-            return  false;
+            return "Error";
         }
 
     };

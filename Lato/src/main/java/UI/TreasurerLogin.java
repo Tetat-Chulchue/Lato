@@ -1,10 +1,16 @@
 package UI;
 
+import com.mycompany.lato.Get;
+import com.mycompany.lato.model.Treasurer;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class TreasurerLogin implements ComponentListener, ActionListener {
+
+    Treasurer currentUser;
+
 //    Config ------->
     private int winW = 459;
     private int winH = 700;
@@ -141,9 +147,18 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
-            TreasurerDashboard UI = new TreasurerDashboard();
-            UI.init();
-            fr.dispose();
+            if (Treasurer.login(TF1.getText(), TF2.getText()) != null) {
+
+                // GET FUCKING USER HERE //
+
+                TreasurerDashboard UI = new TreasurerDashboard();
+                UI.init();
+                fr.dispose();
+            } else {
+                System.out.println("Unable to login");
+            }
+
+
         }
     }
 }
