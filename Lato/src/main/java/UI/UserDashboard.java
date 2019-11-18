@@ -97,7 +97,7 @@ public class UserDashboard implements ActionListener {
         Bar.add(Bar_BTN);
         Bar.add(Bar_Forms);
 
-        Bar_BTN.setLayout(new GridLayout(1, 2));
+        Bar_BTN.setLayout(new GridLayout(2, 1));
         Bar_BTN.add(Bar_Lable_Top);
         Bar_BTN.add(Bar_BTN_Button);
 
@@ -119,7 +119,6 @@ public class UserDashboard implements ActionListener {
         Bar_Lable_Top.add(Amount_Debt_Container);
         Bar_BTN_Button.setLayout(new GridLayout(1, 4));
         Bar_BTN_Button.add(BTN_Log);
-        Bar_BTN_Button.setLocation((fr.getWidth()/2)-(Bar_BTN_Button.getWidth()/2),0);
 
         Bar_Forms.setLayout(new BorderLayout());
         Infor_Forms.setLayout(new GridLayout(2, 1));

@@ -105,7 +105,8 @@ public class Pay implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
-
+            Confirm UI = new Confirm();
+            UI.init(fr);
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
             Other.setVisible(true);
             fr.dispose();

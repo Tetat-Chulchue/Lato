@@ -85,7 +85,8 @@ public class AddPayment implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
-
+            Confirm UI = new Confirm();
+            UI.init(fr);
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
             OtherFR.setVisible(true);
             fr.dispose();
