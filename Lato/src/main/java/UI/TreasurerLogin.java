@@ -149,15 +149,13 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
-            String email = Treasurer.login(TF1.getText(), TF2.getText());
+//            String email = Treasurer.login(TF1.getText(), TF2.getText());
+            String email = Treasurer.login("lato@dev.com", "admin1234");
             if (email != null) {
-
                 // GET FUCKING USER HERE //
                 Get userData = new Get();
                 Map<String, Object> user = userData.getByCollectionAndDocumentName("Treasurers", email);
-                currentUser.setName((String)user.get("name"));
-                String name = currentUser.getName();
-                System.out.println(name);
+                currentUser = new Treasurer((String)user.get("name"), (String)user.get("lastname"), (String)user.get("studentId"));
                 TreasurerDashboard UI = new TreasurerDashboard();
                 UI.init();
                 fr.dispose();

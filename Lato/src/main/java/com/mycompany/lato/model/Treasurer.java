@@ -11,6 +11,15 @@ public class Treasurer {
     protected String lastname;
     protected String studentId;
 
+    public Treasurer() {
+    }
+
+    public Treasurer(String name, String lastname, String studentId) {
+        this.name = name;
+        this.lastname = lastname;
+        this.studentId = studentId;
+    }
+
     public String getName() {
         return name;
     }
