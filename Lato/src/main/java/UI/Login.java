@@ -122,7 +122,9 @@ public class Login implements ActionListener {
             UI.init(fr);
             fr.setVisible(false);
         } else if (e.getSource().equals(this.btn2)) {
-            System.exit(0);
+            UserDashboard UI = new UserDashboard();
+            UI.init();
+            fr.setVisible(false);
         }
     }
 }
