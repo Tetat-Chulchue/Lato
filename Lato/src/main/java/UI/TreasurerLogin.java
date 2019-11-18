@@ -5,6 +5,8 @@ import com.mycompany.lato.model.Treasurer;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.*;
 
 public class TreasurerLogin implements ComponentListener, ActionListener {
@@ -147,10 +149,15 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
-            if (Treasurer.login(TF1.getText(), TF2.getText()) != null) {
+            String email = Treasurer.login(TF1.getText(), TF2.getText());
+            if (email != null) {
 
                 // GET FUCKING USER HERE //
-
+                Get userData = new Get();
+                Map<String, Object> user = userData.getByCollectionAndDocumentName("Treasurers", email);
+                currentUser.setName((String)user.get("name"));
+                String name = currentUser.getName();
+                System.out.println(name);
                 TreasurerDashboard UI = new TreasurerDashboard();
                 UI.init();
                 fr.dispose();
