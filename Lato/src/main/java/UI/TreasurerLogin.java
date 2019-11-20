@@ -160,7 +160,7 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
                 UI.init();
                 fr.dispose();
             } else {
-                new PopUp("Unable to login", "ErrorBox: Login");
+                new PopUp("Unable to login", "Login").error();
             }
         }
     }

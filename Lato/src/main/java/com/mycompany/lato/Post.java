@@ -7,7 +7,10 @@ package com.mycompany.lato;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -21,15 +24,19 @@ public class Post {
         Init gg = new Init();
         Firestore db = gg.initializeApp();
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 50; i++) {
+
+            SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+            Date date = new Date(System.currentTimeMillis());
+
             Map<String, Object> data = new HashMap<>();
-            data.put("SID", 6107000+i);
+            data.put("SID", 61070+String.format("%03d", i));
             data.put("firstName", "Ada");
             data.put("lastName", "Lovelace");
-            data.put("amount", 99999);
-            data.put("createAt", "xx-xx-xxxx");
-            data.put("updateAt", "xx-xx-xxxx");
-            ApiFuture<DocumentReference> addedDocRef = db.collection("Table").add(data);
+            data.put("amount", 0.0);
+            data.put("createAt", formatter.format(date));
+            data.put("updateAt", formatter.format(date));
+            ApiFuture<DocumentReference> addedDocRef = db.collection("Users").add(data);
             System.out.println("Added document with ID: " + addedDocRef.get().getId());
         }
     };
