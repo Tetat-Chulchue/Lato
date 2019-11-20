@@ -20,7 +20,7 @@ import java.util.concurrent.ExecutionException;
  * @author TanawatChanhom
  */
 public class Post {
-    public void test() throws IOException, InterruptedException, ExecutionException {
+    public static void test() throws IOException, InterruptedException, ExecutionException {
         Init gg = new Init();
         Firestore db = gg.initializeApp();
 
@@ -38,6 +38,28 @@ public class Post {
             data.put("updateAt", formatter.format(date));
             ApiFuture<DocumentReference> addedDocRef = db.collection("Users").add(data);
             System.out.println("Added document with ID: " + addedDocRef.get().getId());
+        }
+    };
+    public static boolean addUser(String sid, String firstName, String lastName) throws IOException, InterruptedException, ExecutionException {
+        try{
+            HashMap user = Get.getBySid(sid);
+            return false;
+        }catch(IndexOutOfBoundsException ex){
+            Init gg = new Init();
+            Firestore db = gg.initializeApp();
+
+            SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+            Date date = new Date(System.currentTimeMillis());
+
+            Map<String, Object> data = new HashMap<>();
+            data.put("SID", sid);
+            data.put("firstName", firstName);
+            data.put("lastName", lastName);
+            data.put("amount", 0.0);
+            data.put("createAt", formatter.format(date));
+            data.put("updateAt", formatter.format(date));
+            ApiFuture<DocumentReference> addedDocRef = db.collection("Users").add(data);
+            return true;
         }
     };
 }
