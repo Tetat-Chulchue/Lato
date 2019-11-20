@@ -1,17 +1,12 @@
 package UI;
 
-import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
-import com.mycompany.lato.query.Init;
+import com.mycompany.lato.query.Get;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
+import java.util.HashMap;
 
 public class Pay implements ActionListener {
     private int winW = 491;
@@ -119,22 +114,10 @@ public class Pay implements ActionListener {
             int amount = Integer.parseInt(Amount.getText());
 
             try {
-                Init init = new Init();
-                Firestore db = init.initializeApp();
-                DocumentReference reference = db.collection("Users").document(sid);
-                ApiFuture<DocumentSnapshot> snapshot = reference.get();
-                DocumentSnapshot document = snapshot.get();
-                if (document.exists()) {
-                    System.out.println("Document data: " + document.getData());
-                } else {
-                    System.out.println("Fail to retrieve data");
-                    // TODO: Handle not existing SID here ( UI )
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            } catch (ExecutionException ex) {
+                HashMap user = Get.getBySid(sid);
+
+            } catch (IndexOutOfBoundsException ex) {
+                new PopUp("This SID is not in database.", "Payment fail.").error();
                 ex.printStackTrace();
             }
 
