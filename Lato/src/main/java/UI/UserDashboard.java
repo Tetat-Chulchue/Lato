@@ -1,6 +1,6 @@
 package UI;
 
-import com.mycompany.lato.Get;
+import com.mycompany.lato.query.Get;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

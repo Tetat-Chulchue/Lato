@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.lato;
-
-import com.mycompany.lato.model.Treasurer;
+package com.mycompany.lato.query;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;

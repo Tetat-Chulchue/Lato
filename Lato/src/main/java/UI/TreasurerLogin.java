@@ -1,11 +1,10 @@
 package UI;
 
-import com.mycompany.lato.Get;
+import com.mycompany.lato.query.Get;
 import com.mycompany.lato.model.Treasurer;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.HashMap;
 import java.util.Map;
 import javax.swing.*;
 
