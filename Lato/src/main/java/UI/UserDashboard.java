@@ -208,13 +208,6 @@ public class UserDashboard implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        UserDashboard UI = new UserDashboard();
-        UI.init();
-    }
-
-
-
     public void addData(int SID, String FN, String LN, double AM, String crateAt, String updateAt) { // Add Data to Table
         model.addRow(new Object[] {table.getRowCount()+1, SID, FN, LN, AM, crateAt, updateAt});
     }

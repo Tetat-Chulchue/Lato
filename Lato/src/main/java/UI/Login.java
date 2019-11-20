@@ -111,11 +111,6 @@ public class Login implements ActionListener {
 
     }
 
-    public static void main(String[] args) {
-        Login test = new Login();
-        test.init();
-    }
-
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) {
             TreasurerLogin UI = new TreasurerLogin();
