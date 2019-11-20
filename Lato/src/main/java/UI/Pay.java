@@ -4,7 +4,7 @@ import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
-import com.mycompany.lato.Init;
+import com.mycompany.lato.query.Init;
 
 import javax.swing.*;
 import java.awt.*;
