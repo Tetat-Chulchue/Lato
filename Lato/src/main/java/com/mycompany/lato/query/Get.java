@@ -20,10 +20,10 @@ import java.util.concurrent.ExecutionException;
  * @author TanawatChanhom
  */
 public class Get {
-    private Init init = new Init();
-    private Firestore db;
+    private static Init init = new Init();
+    private static Firestore db;
 
-    public Map<String, Object> getByCollectionAndDocumentName(String collectionName, String documentName){
+    public static Map<String, Object> getByCollectionAndDocumentName(String collectionName, String documentName){
         try {
             db = init.initializeApp();
             DocumentReference docRef = db.collection(collectionName).document(documentName);
@@ -42,7 +42,7 @@ public class Get {
         return null;
     }
 
-    public ArrayList getAll() {
+    public static ArrayList getAll() {
         try {
             ArrayList data = new ArrayList();
             HashMap object = new HashMap();
@@ -65,7 +65,7 @@ public class Get {
         }
         return null;
     }
-    public HashMap getBySid(String target){
+    public static HashMap getBySid(String target){
         try {
             ArrayList<HashMap> data = new ArrayList();
             HashMap object = new HashMap();
