@@ -34,8 +34,8 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         boxContainer = new JPanel();
         boxUser = new JPanel();
         boxPass = new JPanel();
-        TF1 = new JTextField();
-        TF2 = new JPasswordField();
+        TF1 = new JTextField("lato@dev.com");
+        TF2 = new JPasswordField("admin1234");
         LB1 = new JLabel("LATO");
         userText = new JLabel("Username");
         passText = new JLabel("Password");
@@ -150,9 +150,9 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
 //            String email = Treasurer.login(TF1.getText(), TF2.getText());
-            String email = Treasurer.login("lato@dev.com", "admin1234");
+            String email = Treasurer.login(TF1.getText(), TF2.getText());
             if (email != null) {
-                // GET FUCKING USER HERE //
+                // GET USER HERE //
                 Get userData = new Get();
                 Map<String, Object> user = userData.getByCollectionAndDocumentName("Treasurers", email);
                 currentUser = new Treasurer((String)user.get("name"), (String)user.get("lastname"), (String)user.get("studentId"));
