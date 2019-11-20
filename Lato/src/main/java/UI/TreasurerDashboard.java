@@ -177,7 +177,7 @@ public class TreasurerDashboard implements ActionListener {
         fr.add(Bar, BorderLayout.NORTH);
         fr.add(Table, BorderLayout.CENTER);
 
-//        this.preload();
+        this.preload();
 
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fr.setPreferredSize(new Dimension(winW, winH));
@@ -272,16 +272,7 @@ public class TreasurerDashboard implements ActionListener {
         table.setForeground(new Color(255, 203, 155));
 //        Style --------------------------->
 
-        // get data
-        Get data = new Get();
-        Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
-        Amount_Student.setText(currentdata.get("student") + "");
-        Amount_Money.setText(currentdata.get("money") + "");
-        Amount_Debt.setText(currentdata.get("debt") + "");
 
-//        System.out.println(currentdata.get("student"));
-
-        // get data
     }
 
     public static void main(String[] args) {
@@ -340,5 +331,15 @@ public class TreasurerDashboard implements ActionListener {
                 (String) data.get("updateAt")
             );
         }
+        // get data
+        Get data = new Get();
+        Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
+        Amount_Student.setText(currentdata.get("student") + "");
+        Amount_Money.setText(currentdata.get("money") + "");
+        Amount_Debt.setText(currentdata.get("debt") + "");
+
+//        System.out.println(currentdata.get("student"));
+
+        // get data
     }
 }
