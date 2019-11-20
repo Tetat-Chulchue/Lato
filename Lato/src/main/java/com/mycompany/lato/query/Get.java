@@ -65,4 +65,27 @@ public class Get {
         }
         return null;
     }
+    public HashMap getBySid(String target){
+        try {
+            ArrayList<HashMap> data = new ArrayList();
+            HashMap object = new HashMap();
+            db = init.initializeApp();
+            ApiFuture<QuerySnapshot> future = db.collection("Users").whereEqualTo("SID", target).get();
+            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+            for (QueryDocumentSnapshot document : documents) {
+                object.put("uuid", document.getId());
+                object.put("SID", document.getData().get("SID"));
+                object.put("firstName", document.getData().get("firstName"));
+                object.put("lastName", document.getData().get("lastName"));
+                object.put("amount", document.getData().get("amount"));
+                object.put("createAt", document.getData().get("createAt"));
+                object.put("updateAt", document.getData().get("updateAt"));
+                data.add(object);
+            }
+            return data.get(0);
+        } catch (IOException | InterruptedException | ExecutionException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
 }
