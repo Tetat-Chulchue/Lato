@@ -275,11 +275,6 @@ public class TreasurerDashboard implements ActionListener {
 
     }
 
-    public static void main(String[] args) {
-        TreasurerDashboard UI = new TreasurerDashboard();
-        UI.init();
-    }
-
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.BTN_Pay)) { //Button Pay
             Pay UI = new Pay();

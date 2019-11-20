@@ -71,11 +71,6 @@ public class TreasurerLog implements ActionListener {
 //        Style --------------------------->
     }
 
-    public static void main(String[] args) {
-        TreasurerLog UI = new TreasurerLog();
-        UI.init();
-    }
-
     public void addData(String Name, String Particular, String Description, Double Amount, String Timestamp) { // Add Data to Table
         model.addRow(new Object[] {Table.getRowCount()+1, Name, Particular, Description, Amount, Timestamp});
     }
