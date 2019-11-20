@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TreasurerDashboard implements ActionListener {
 //    Config ------->
@@ -77,11 +78,11 @@ public class TreasurerDashboard implements ActionListener {
         Amount_Debt_Container = new JPanel();
         Amount_Debt_Panel = new JPanel();
         Amount_Student_Text = new JLabel("Amount Student");
-        Amount_Student = new JLabel("9999999");
+        Amount_Student = new JLabel("-");
         Amount_Money_Text = new JLabel("Amount Money");
-        Amount_Money = new JLabel("9999999");
+        Amount_Money = new JLabel("-");
         Amount_Debt_Text = new JLabel("Amount Debt");
-        Amount_Debt = new JLabel("9999999");
+        Amount_Debt = new JLabel("-");
 
         BTN_Pay = new JButton("Pay");
         BTN_Add_Payment = new JButton("Add Payment");
@@ -270,6 +271,17 @@ public class TreasurerDashboard implements ActionListener {
         table.setBackground(new Color(16, 100, 102));
         table.setForeground(new Color(255, 203, 155));
 //        Style --------------------------->
+
+        // get data
+        Get data = new Get();
+        Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
+        Amount_Student.setText(currentdata.get("student") + "");
+        Amount_Money.setText(currentdata.get("money") + "");
+        Amount_Debt.setText(currentdata.get("debt") + "");
+
+//        System.out.println(currentdata.get("student"));
+
+        // get data
     }
 
     public static void main(String[] args) {

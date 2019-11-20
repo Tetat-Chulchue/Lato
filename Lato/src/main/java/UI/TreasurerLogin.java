@@ -33,8 +33,8 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         boxContainer = new JPanel();
         boxUser = new JPanel();
         boxPass = new JPanel();
-        TF1 = new JTextField(""); //lato@dev.com
-        TF2 = new JPasswordField(""); //admin1234
+        TF1 = new JTextField("lato@dev.com"); //lato@dev.com
+        TF2 = new JPasswordField("admin1234"); //admin1234
         LB1 = new JLabel("LATO");
         userText = new JLabel("Username");
         passText = new JLabel("Password");
