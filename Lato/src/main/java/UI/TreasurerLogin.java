@@ -12,7 +12,7 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
 
     Treasurer currentUser;
 
-//    Config ------->
+    //    Config ------->
     private int winW = 459;
     private int winH = 700;
 //    Config ------->
@@ -45,7 +45,7 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
 
         P1.setLayout(null);
         P1.add(LB1);
-        P1.setBackground(new Color(39, 70, 68));
+        P1.setBackground(new Color(0, 53, 84));
 
         P2.setLayout(null);
         boxContainer.setLayout(new GridLayout(2, 1));
@@ -58,12 +58,12 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         boxContainer.add(boxUser);
         boxContainer.add(boxPass);
         P2.add(boxContainer);
-        P2.setBackground(new Color(39, 70, 68));
+        P2.setBackground(new Color(0, 53, 84));
 
         P3.setLayout(null);
         P3.add(btn1);
         btn1.addActionListener(this);
-        P3.setBackground(new Color(39, 70, 68));
+        P3.setBackground(new Color(0, 53, 84));
 
         fr.setLayout(new BorderLayout());
         Bar_Top.setLayout(new BorderLayout());
@@ -98,7 +98,7 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         LB1.setFont(new Font("SansSerif", Font.PLAIN, 70));
         LB1.setForeground(new Color(255, 203, 155));
 
-        Bar_Top.setBackground(new Color(39, 70, 68));
+        Bar_Top.setBackground(new Color(0, 53, 84));
 
         btn1.setBounds(0, 0, 112, 39);
         btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 97);
@@ -108,16 +108,16 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
 
         boxContainer.setBounds(0, 0, 280, 130);
         boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 80);
-        boxContainer.setBackground(new Color(39, 70, 68));
+        boxContainer.setBackground(new Color(0, 53, 84));
 
-        boxUser.setBackground(new Color(39, 70, 68));
-        boxPass.setBackground(new Color(39, 70, 68));
+        boxUser.setBackground(new Color(0, 53, 84));
+        boxPass.setBackground(new Color(0, 53, 84));
 
-        userText.setBackground(new Color(39, 70, 68));
+        userText.setBackground(new Color(0, 53, 84));
         userText.setForeground(new Color(255, 203, 155));
         TF1.setBackground(new Color(96, 106, 106));
         TF1.setForeground(new Color(255, 203, 155));
-        passText.setBackground(new Color(39, 70, 68));
+        passText.setBackground(new Color(0, 53, 84));
         passText.setForeground(new Color(255, 203, 155));
         TF2.setBackground(new Color(96, 106, 106));
         TF2.setForeground(new Color(255, 203, 155));

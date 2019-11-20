@@ -52,15 +52,15 @@ public class Login implements ActionListener {
 
         P1.setLayout(null);
         P1.add(jLabel);
-        P1.setBackground(new Color(39, 70, 68));
+        P1.setBackground(new Color(0, 53, 84));
 
         P2.setLayout(null);
         P2.add(jLabe2);
         P2.add(boxContainer);
-        P2.setBackground(new Color(39, 70, 68));
+        P2.setBackground(new Color(0, 53, 84));
 
         P3.setLayout(null);
-        P3.setBackground(new Color(39, 70, 68));
+        P3.setBackground(new Color(0, 53, 84));
 
 
         fr.setLayout(new BorderLayout());
@@ -82,14 +82,14 @@ public class Login implements ActionListener {
         jLabel.setBounds(0, 0, 188, 60);
         jLabel.setLocation((fr.getWidth()/2)-(jLabel.getWidth()/2), 120);
         jLabel.setFont(new Font("SansSerif", Font.PLAIN, 70));
-        jLabel.setForeground(new Color(255, 203, 155));
+        jLabel.setForeground(new Color(0, 166, 251));
 
         jLabe2.setBounds(0, 0, 188, 60);
         jLabe2.setLocation((fr.getWidth()/2)-(jLabel.getWidth()/2), 0);
         jLabe2.setFont(new Font("SansSerif", Font.PLAIN, 32));
-        jLabe2.setForeground(new Color(255, 203, 155));
+        jLabe2.setForeground(new Color(0, 166, 251));
 
-        Bar_Top.setBackground(new Color(39, 70, 68));
+        Bar_Top.setBackground(new Color(0, 53, 84));
 
         btn1.setBounds(0, 0, 112, 39);
         btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 0);
@@ -104,10 +104,10 @@ public class Login implements ActionListener {
 
         boxContainer.setBounds(0, 0, 280, 130);
         boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 80);
-        boxContainer.setBackground(new Color(39, 70, 68));
+        boxContainer.setBackground(new Color(0, 53, 84));
 
-        boxUser.setBackground(new Color(39, 70, 68));
-        boxTreasurer.setBackground(new Color(39, 70, 68));
+        boxUser.setBackground(new Color(0, 53, 84));
+        boxTreasurer.setBackground(new Color(0, 53, 84));
 
     }
 
