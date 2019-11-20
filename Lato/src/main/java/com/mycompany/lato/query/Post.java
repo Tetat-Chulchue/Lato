@@ -21,8 +21,8 @@ import java.util.concurrent.ExecutionException;
  */
 public class Post {
     public static void test() throws IOException, InterruptedException, ExecutionException {
-        Init gg = new Init();
-        Firestore db = gg.initializeApp();
+        Init firebase = new Init();
+        Firestore db = firebase.initializeApp();
 
         for (int i = 1; i < 50; i++) {
 
@@ -62,4 +62,26 @@ public class Post {
             return true;
         }
     };
+
+    public static void addLog(String name, String particular, String description, double amount, String timestamp) {
+        try {
+            Init firebase = new Init();
+            Firestore db = firebase.initializeApp();
+            Map<String, Object> data = new HashMap<>();
+            data.put("name", name);
+            data.put("particular", particular);
+            data.put("description", description);
+            data.put("amount", amount+"");
+            data.put("createAt", timestamp);
+            ApiFuture<DocumentReference> addedDocRef = db.collection("Log").add(data);
+            System.out.println("Added document with ID: " + addedDocRef.get().getId());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
