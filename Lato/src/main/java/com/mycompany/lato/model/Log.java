@@ -19,7 +19,7 @@ public class Log {
         this.description = description;
         this.amount = amount;
         this.timestamp = formatter.format(new Date(System.currentTimeMillis()));
-        Post.addLog("Shiba", "Test", "Test", 999.99, "Test");
+        Post.addLog(name, particular, description, amount, timestamp);
     }
 
     public String getName() {

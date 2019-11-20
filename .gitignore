@@ -6,3 +6,5 @@ Lato/src/target/
 
 
 *.class
+
+.idea/misc.xml
