@@ -7,6 +7,7 @@ package com.mycompany.lato.query;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import com.google.firebase.cloud.FirestoreClient;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,12 +21,10 @@ import java.util.concurrent.ExecutionException;
  * @author TanawatChanhom
  */
 public class Get {
-    private static Init init = new Init();
-    private static Firestore db;
 
     public static Map<String, Object> getByCollectionAndDocumentName(String collectionName, String documentName){
         try {
-            db = init.initializeApp();
+            Firestore db = FirestoreClient.getFirestore();
             DocumentReference docRef = db.collection(collectionName).document(documentName);
 
             ApiFuture<DocumentSnapshot> future = docRef.get();
@@ -36,7 +35,7 @@ public class Get {
                 System.out.println("No such document!");
                 return null;
             }
-        } catch (InterruptedException | ExecutionException | IOException e) {
+        } catch (InterruptedException | ExecutionException e) {
             System.out.println(e + "Form: Get.java");
         }
         return null;
@@ -44,10 +43,10 @@ public class Get {
 
     public static ArrayList getAll() {
         try {
+            Firestore db = FirestoreClient.getFirestore();
             ArrayList data = new ArrayList();
             HashMap object = new HashMap();
-            db = init.initializeApp();
-            ApiFuture<QuerySnapshot> future = db.collection("Table").get();
+            ApiFuture<QuerySnapshot> future = db.collection("Users").get();
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
             for (QueryDocumentSnapshot document : documents) {
                 object.put("uuid", document.getId());
@@ -60,16 +59,16 @@ public class Get {
                 data.add(object.toString());
             }
             return data;
-        } catch (IOException | InterruptedException | ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             System.out.println(e);
         }
         return null;
     }
-    public static HashMap getBySid(String target) throws IndexOutOfBoundsException{
+    public static HashMap getBySid(String target) {
         try {
             ArrayList<HashMap> data = new ArrayList();
             HashMap object = new HashMap();
-            db = init.initializeApp();
+            Firestore db = FirestoreClient.getFirestore();
             ApiFuture<QuerySnapshot> future = db.collection("Users").whereEqualTo("SID", target).get();
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
             for (QueryDocumentSnapshot document : documents) {
@@ -83,7 +82,7 @@ public class Get {
                 data.add(object);
             }
             return data.get(0);
-        } catch (IOException | InterruptedException | ExecutionException e) {
+        } catch (IndexOutOfBoundsException | InterruptedException | ExecutionException e) {
             System.out.println(e);
         }
         return null;

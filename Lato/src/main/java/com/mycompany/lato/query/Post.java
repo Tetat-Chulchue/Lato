@@ -7,6 +7,7 @@ package com.mycompany.lato.query;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import com.google.firebase.cloud.FirestoreClient;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -20,33 +21,35 @@ import java.util.concurrent.ExecutionException;
  * @author TanawatChanhom
  */
 public class Post {
-    public static void test() throws IOException, InterruptedException, ExecutionException {
-        Init firebase = new Init();
-        Firestore db = firebase.initializeApp();
+    public static void test() {
+        try {
+            Firestore db = FirestoreClient.getFirestore();
 
-        for (int i = 1; i < 50; i++) {
+            for (int i = 1; i < 50; i++) {
 
-            SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-            Date date = new Date(System.currentTimeMillis());
+                SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+                Date date = new Date(System.currentTimeMillis());
 
-            Map<String, Object> data = new HashMap<>();
-            data.put("SID", 61070+String.format("%03d", i));
-            data.put("firstName", "Ada");
-            data.put("lastName", "Lovelace");
-            data.put("amount", 0.0);
-            data.put("createAt", formatter.format(date));
-            data.put("updateAt", formatter.format(date));
-            ApiFuture<DocumentReference> addedDocRef = db.collection("Users").add(data);
-            System.out.println("Added document with ID: " + addedDocRef.get().getId());
+                Map<String, Object> data = new HashMap<>();
+                data.put("SID", 61070+String.format("%03d", i));
+                data.put("firstName", "Ada");
+                data.put("lastName", "Lovelace");
+                data.put("amount", 0.0);
+                data.put("createAt", formatter.format(date));
+                data.put("updateAt", formatter.format(date));
+                ApiFuture<DocumentReference> addedDocRef = db.collection("Users").add(data);
+                System.out.println("Added document with ID: " + addedDocRef.get().getId());
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(e);
         }
     };
-    public static boolean addUser(String sid, String firstName, String lastName) throws IOException, InterruptedException, ExecutionException {
+    public static boolean addUser(String sid, String firstName, String lastName) {
         try{
             HashMap user = Get.getBySid(sid);
             return false;
-        }catch(IndexOutOfBoundsException ex){
-            Init gg = new Init();
-            Firestore db = gg.initializeApp();
+        } catch(IndexOutOfBoundsException ex) {
+            Firestore db = FirestoreClient.getFirestore();
 
             SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
             Date date = new Date(System.currentTimeMillis());
@@ -65,8 +68,7 @@ public class Post {
 
     public static void addLog(String name, String particular, String description, double amount, String timestamp) {
         try {
-            Init firebase = new Init();
-            Firestore db = firebase.initializeApp();
+            Firestore db = FirestoreClient.getFirestore();
             Map<String, Object> data = new HashMap<>();
             data.put("name", name);
             data.put("particular", particular);
@@ -75,12 +77,8 @@ public class Post {
             data.put("createAt", timestamp);
             ApiFuture<DocumentReference> addedDocRef = db.collection("Log").add(data);
             System.out.println("Added document with ID: " + addedDocRef.get().getId());
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(e);
         }
     }
 

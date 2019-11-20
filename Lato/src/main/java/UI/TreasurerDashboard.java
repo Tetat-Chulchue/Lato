@@ -331,15 +331,12 @@ public class TreasurerDashboard implements ActionListener {
                 (String) data.get("updateAt")
             );
         }
+
         // get data
         Get data = new Get();
         Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
         Amount_Student.setText(currentdata.get("student") + "");
         Amount_Money.setText(currentdata.get("money") + "");
         Amount_Debt.setText(currentdata.get("debt") + "");
-
-//        System.out.println(currentdata.get("student"));
-
-        // get data
     }
 }
