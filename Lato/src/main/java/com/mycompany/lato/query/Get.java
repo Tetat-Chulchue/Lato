@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class Get {
 
+
     public static Map<String, Object> getByCollectionAndDocumentName(String collectionName, String documentName){
         try {
             Firestore db = FirestoreClient.getFirestore();
