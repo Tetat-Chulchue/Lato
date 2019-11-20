@@ -1,18 +1,14 @@
 package UI;
 
-import com.google.common.base.Splitter;
-import com.mycompany.lato.*;
+import com.mycompany.lato.query.Get;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 public class TreasurerDashboard implements ActionListener {
 //    Config ------->

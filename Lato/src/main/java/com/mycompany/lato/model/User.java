@@ -13,12 +13,4 @@ public class User {
         this.debt = 0.0;
     }
 
-    public void payDebt(float amount) {
-        this.debt -= amount;
-    }
-
-    public void addDebt(float amount) {
-        this.debt += amount;
-    }
-
 }

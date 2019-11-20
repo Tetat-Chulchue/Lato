@@ -1,9 +1,17 @@
 package UI;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.Firestore;
+import com.mycompany.lato.Init;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class Pay implements ActionListener {
     private int winW = 491;
@@ -105,6 +113,34 @@ public class Pay implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
+
+            String sid = SID.getText();
+            String description = Description.getText();
+            int amount = Integer.parseInt(Amount.getText());
+
+            try {
+                Init init = new Init();
+                Firestore db = init.initializeApp();
+                DocumentReference reference = db.collection("Users").document(sid);
+                ApiFuture<DocumentSnapshot> snapshot = reference.get();
+                DocumentSnapshot document = snapshot.get();
+                if (document.exists()) {
+                    System.out.println("Document data: " + document.getData());
+                } else {
+                    System.out.println("Fail to retrieve data");
+                    // TODO: Handle not existing SID here ( UI )
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            } catch (ExecutionException ex) {
+                ex.printStackTrace();
+            }
+
+
+            // --------- Next Page ---------
+
             Confirm UI = new Confirm();
             UI.init(fr);
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel

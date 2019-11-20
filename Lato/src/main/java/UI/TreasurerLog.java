@@ -1,11 +1,9 @@
 package UI;
 
-import com.mycompany.lato.Get;
-import com.mycompany.lato.model.Test;
+import com.mycompany.lato.query.Get;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.Style;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
