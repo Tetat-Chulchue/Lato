@@ -34,8 +34,8 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         boxContainer = new JPanel();
         boxUser = new JPanel();
         boxPass = new JPanel();
-        TF1 = new JTextField("lato@dev.com");
-        TF2 = new JPasswordField("admin1234");
+        TF1 = new JTextField(""); //lato@dev.com
+        TF2 = new JPasswordField(""); //admin1234
         LB1 = new JLabel("LATO");
         userText = new JLabel("Username");
         passText = new JLabel("Password");
@@ -160,10 +160,8 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
                 UI.init();
                 fr.dispose();
             } else {
-                System.out.println("Unable to login");
+                new PopUp("Unable to login", "ErrorBox: Login");
             }
-
-
         }
     }
 }
