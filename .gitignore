@@ -2,5 +2,6 @@
 Lato/src/main/target
 Lato/src/target
 .idea/libraries/
+.idea/misc.xml
 
 *.class
