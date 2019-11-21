@@ -62,7 +62,6 @@ public class TreasurerLogin implements ActionListener {
 
         P3.setLayout(null);
         P3.add(btn1);
-        btn1.addActionListener(this);
         P3.setBackground(new Color(0, 53, 84));
 
         fr.setLayout(new BorderLayout());
@@ -82,14 +81,7 @@ public class TreasurerLogin implements ActionListener {
         fr.pack();
 
         // Listener --------------------------->
-//        fr.getContentPane().addComponentListener(this);
-//        BTN_Back.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                OtherFR.setVisible(true);
-//                fr.dispose();
-//            }
-//        });
+        btn1.addActionListener(this);
         // Listener --------------------------->
 
         // Style --------------------------->
@@ -123,28 +115,6 @@ public class TreasurerLogin implements ActionListener {
         TF2.setForeground(new Color(255, 203, 155));
         // Style --------------------------->
     }
-
-//    @Override
-//    public void componentResized(ComponentEvent componentEvent) {
-//        LB1.setLocation((fr.getWidth()/2)-(LB1.getWidth()/2), 120);
-//        btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 97);
-//        boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 80);
-//    }
-//
-//    @Override
-//    public void componentMoved(ComponentEvent componentEvent) {
-//
-//    }
-//
-//    @Override
-//    public void componentShown(ComponentEvent componentEvent) {
-//
-//    }
-//
-//    @Override
-//    public void componentHidden(ComponentEvent componentEvent) {
-//
-//    }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
