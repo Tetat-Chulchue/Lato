@@ -180,6 +180,8 @@ public class TreasurerDashboard implements ActionListener {
         this.preload();
 
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
         fr.setPreferredSize(new Dimension(winW, winH));
         fr.setVisible(true);
 //        fr.setResizable(false);

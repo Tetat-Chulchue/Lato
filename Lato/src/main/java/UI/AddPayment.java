@@ -64,6 +64,8 @@ public class AddPayment implements ActionListener {
         fr.add(BTN_Container, BorderLayout.SOUTH);
 
         fr.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
         fr.setPreferredSize(new Dimension(winW, winH));
         fr.setResizable(true);
         fr.setVisible(true);
