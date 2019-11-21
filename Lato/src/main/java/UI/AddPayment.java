@@ -22,7 +22,7 @@ public class AddPayment implements ActionListener {
     private int winW = 491;
     private int winH = 419;
 
-    private JFrame fr, OtherFR;
+    private JFrame fr;
     private JPanel Forms_Container, Forms_Top, Forms_Bottom, BTN_Container;
     private JTextArea Description;
     private JTextField Amount;
@@ -31,8 +31,7 @@ public class AddPayment implements ActionListener {
     private JScrollPane scrollPane;
     private String timestamp;
 
-    public void init(JFrame FR) {
-        OtherFR = FR;
+    public void init() {
         fr = new JFrame("Add Payment");
         Forms_Container = new JPanel();
         Forms_Top = new JPanel();
@@ -113,8 +112,9 @@ public class AddPayment implements ActionListener {
                     DocumentReference currentAmount = db.collection("Statistics").document("amount");
                     ApiFuture<WriteResult> writeResult = currentAmount.update("debt", debt);
                     ApiFuture<WriteResult> writeDate = currentAmount.update("updateAt", date);
-
                     new Log("TREASURER", "-", description, amount);
+                    new TreasurerDashboard().init();
+                    fr.dispose();
                 }
             }catch (IndexOutOfBoundsException ex){
                 new PopUp("This SID is not in database.", "Payment fail.").error();
@@ -122,7 +122,7 @@ public class AddPayment implements ActionListener {
             }
             // NP
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
-            OtherFR.setVisible(true);
+            new TreasurerDashboard().init();
             fr.dispose();
         }
     }

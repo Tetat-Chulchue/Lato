@@ -57,7 +57,7 @@ public class TreasurerDashboard implements ActionListener {
             Last_Name
     ;
     private JButton BTN_Pay, BTN_Add_Payment, BTN_Withdraw, BTN_Log, BTN_Add, BTN_Update, BTN_Delete;
-    private DefaultTableModel model;
+    private DefaultTableModel  model;
     private JTable table;
     private JScrollPane scrollPane;
     private JTextField SID_Field, First_Name_Field, Last_Name_Field;
@@ -278,21 +278,20 @@ public class TreasurerDashboard implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.BTN_Pay)) { //Button Pay
             Pay UI = new Pay();
-            UI.init(fr);
-            fr.setVisible(false);
+            UI.init();
+            fr.dispose();
         } else if (e.getSource().equals(this.BTN_Add_Payment)) { //Button Add Payment
             AddPayment UI = new AddPayment();
-            UI.init(fr);
-            fr.setVisible(false);
+            UI.init();
+            fr.dispose();
         } else if (e.getSource().equals(this.BTN_Withdraw)) { //Button Withdraw
             Withdraw UI = new Withdraw();
-            UI.init(fr);
-            fr.setVisible(false);
+            UI.init();
+            fr.dispose();
         } else if (e.getSource().equals(this.BTN_Log)) { //Button See log
             TreasurerLog UI = new TreasurerLog();
             UI.init();
         } else if (e.getSource().equals(this.BTN_Add)) { //Button Add
-
         } else if (e.getSource().equals(this.BTN_Update)) { //Button Update
 
         } else if (e.getSource().equals(this.BTN_Delete)) { //Button Delete
@@ -334,4 +333,12 @@ public class TreasurerDashboard implements ActionListener {
         Amount_Money.setText(currentdata.get("money") + "");
         Amount_Debt.setText(currentdata.get("debt") + "");
     }
+
+//    public void refresh() {
+//        int rowCount = model.getRowCount();
+//        for (int i = rowCount - 1; i >= 0; i--) {
+//            model.removeRow(i);
+//        }
+//        preload();
+//    }
 }

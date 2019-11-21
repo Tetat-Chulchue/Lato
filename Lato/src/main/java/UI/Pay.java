@@ -18,7 +18,7 @@ public class Pay implements ActionListener {
     private int winW = 491;
     private int winH = 419;
 
-    private JFrame fr, Other;
+    private JFrame fr;
     private JPanel BTN_Panel,
             Forms_Panel_Container,
             Forms_Panel_Top,
@@ -32,8 +32,7 @@ public class Pay implements ActionListener {
     private JLabel SID_Text, Amount_Text, Description_Text;
     private JScrollPane scrollPane;
 
-    public void init(JFrame OtherJF) {
-        Other = OtherJF;
+    public void init() {
         fr = new JFrame("Pay");
         BTN_Panel = new JPanel();
         Forms_Panel_Container = new JPanel();
@@ -130,13 +129,15 @@ public class Pay implements ActionListener {
                     DocumentReference userRef = db.collection("Users").document(String.valueOf(user.get("uuid")));
                     ApiFuture<WriteResult> future = userRef.update("amount", debt);
                     new Log("CURRENT_TREASURER", sid, description, amount);
+                    new TreasurerDashboard().init();
+                    fr.dispose();
                 }
             } catch (IndexOutOfBoundsException ex) {
                 new PopUp("This SID is not in database.", "Payment fail.").error();
                 ex.printStackTrace();
             }
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
-            Other.setVisible(true);
+            new TreasurerDashboard().init();
             fr.dispose();
         }
     }

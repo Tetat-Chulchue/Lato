@@ -10,7 +10,7 @@ public class Withdraw implements ActionListener {
     private int winW = 491;
     private int winH = 419;
 
-    private JFrame fr, OtherFR;
+    private JFrame fr;
     private JPanel Forms_Container, Forms_Top, Forms_Bottom, BTN_Container;
     private JTextArea Description;
     private JTextField Amount;
@@ -18,8 +18,7 @@ public class Withdraw implements ActionListener {
     private JButton BTN_Confirm, BTN_Cancel;
     private JScrollPane scrollPane;
 
-    public void init(JFrame FR) {
-        OtherFR = FR;
+    public void init() {
         fr = new JFrame("Withdraw");
         Forms_Container = new JPanel();
         Forms_Top = new JPanel();
@@ -86,10 +85,10 @@ public class Withdraw implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
-            Confirm UI = new Confirm();
-            UI.init(fr);
+            new TreasurerDashboard().init();
+            fr.dispose();
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
-            OtherFR.setVisible(true);
+            new TreasurerDashboard().init();
             fr.dispose();
         }
     }

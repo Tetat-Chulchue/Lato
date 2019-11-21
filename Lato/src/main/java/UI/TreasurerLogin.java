@@ -41,7 +41,7 @@ public class TreasurerLogin implements ActionListener {
         btn1 = new JButton("Login");
         Container = new JPanel();
         Bar_Top = new JPanel();
-        BTN_Back = new JLabel("<");
+        BTN_Back = new JLabel(" <");
 
         P1.setLayout(null);
         P1.add(LB1);
@@ -94,7 +94,8 @@ public class TreasurerLogin implements ActionListener {
 
         btn1.setBounds(0, 0, 112, 39);
         btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 97);
-        btn1.setBackground(Color.red);
+        btn1.setBackground(new Color(96, 106, 106));
+        btn1.setForeground(new Color(255, 203, 155));
         BTN_Back.setForeground(new Color(255, 203, 155));
         BTN_Back.setFont(new Font("SansSerif", Font.PLAIN, 40));
 
