@@ -121,8 +121,6 @@ public class AddPayment implements ActionListener {
                 ex.printStackTrace();
             }
             // NP
-            Confirm UI = new Confirm();
-            UI.init(fr);
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
             OtherFR.setVisible(true);
             fr.dispose();
