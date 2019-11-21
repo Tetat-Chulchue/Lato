@@ -95,8 +95,8 @@ public class Post {
 //            data.put("student", student);
 //            data.put("updateAt", formatter.format(date));
 //            ApiFuture<DocumentReference> addedDocRef = db.collection("Sta").add(data);
-//        }catch (){
-//
+//        }catch (InterruptedException | ExecutionException e){
+//            System.out.println(e);
 //        }
 //    }
 
