@@ -1,9 +1,22 @@
 package UI;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.SetOptions;
+import com.google.cloud.firestore.WriteResult;
+import com.google.firebase.cloud.FirestoreClient;
+import com.mycompany.lato.model.Log;
+import com.mycompany.lato.query.Get;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddPayment implements ActionListener {
     private int winW = 491;
@@ -16,6 +29,7 @@ public class AddPayment implements ActionListener {
     private JLabel Amount_Text, Description_Text;
     private JButton BTN_Confirm, BTN_Cancel;
     private JScrollPane scrollPane;
+    private String timestamp;
 
     public void init(JFrame FR) {
         OtherFR = FR;
@@ -85,6 +99,28 @@ public class AddPayment implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
+            int amount = Integer.parseInt(Amount.getText());
+            String description = Description.getText();
+
+            boolean confirm = new PopUp("Are you sure", "confirm").question();
+            try {
+                if(confirm) {
+                    Date date = new Date(System.currentTimeMillis());
+                    Get data = new Get();
+                    Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
+                    Double debt = Double.parseDouble((currentdata.get("debt") + "")) + amount;
+                    Firestore db = FirestoreClient.getFirestore();
+                    DocumentReference currentAmount = db.collection("Statistics").document("amount");
+                    ApiFuture<WriteResult> writeResult = currentAmount.update("debt", debt);
+                    ApiFuture<WriteResult> writeDate = currentAmount.update("updateAt", date);
+
+                    new Log("TREASURER", "-", description, amount);
+                }
+            }catch (IndexOutOfBoundsException ex){
+                new PopUp("This SID is not in database.", "Payment fail.").error();
+                ex.printStackTrace();
+            }
+            // NP
             Confirm UI = new Confirm();
             UI.init(fr);
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
