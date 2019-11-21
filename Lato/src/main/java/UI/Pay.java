@@ -129,6 +129,8 @@ public class Pay implements ActionListener {
                     DocumentReference userRef = db.collection("Users").document(String.valueOf(user.get("uuid")));
                     ApiFuture<WriteResult> future = userRef.update("amount", debt);
                     new Log(TreasurerLogin.currentUser.getName(), sid, description, amount);
+                    new TreasurerDashboard().init();
+                    fr.dispose();
                 }
             } catch (IndexOutOfBoundsException ex) {
                 new PopUp("This SID is not in database.", "Payment fail.").error();
