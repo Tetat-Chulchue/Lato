@@ -105,44 +105,48 @@ public class AddPayment implements ActionListener {
             String description = Description.getText();
 
             boolean confirm = new PopUp("Are you sure", "confirm").question();
-            try {
-                if(confirm) {
-                    Firestore db = FirestoreClient.getFirestore();
-                    Date date = new Date(System.currentTimeMillis());
-                    Get data = new Get();
-                    Get allUsers = new Get();
-                    ArrayList rowUserDatas = allUsers.getAll();
-                    for (int i = 0; i < rowUserDatas.size();i++){
-                        HashMap userdata = new HashMap();
-                        String rows = rowUserDatas.get(i) + "";
-                        String[] pairs = rows.split(", ");
-                        for (int j = 0; j < pairs.length; j++){
-                            userdata.put(
-                                    pairs[j].split("=")[0].replace("{", "").replace("}", ""),
-                                    pairs[j].split("=")[1].replace("{", "").replace("}", "")
-                            );
-                        }
+            if(amount > 0) {
+                try {
+                    if (confirm) {
+                        Firestore db = FirestoreClient.getFirestore();
+                        Date date = new Date(System.currentTimeMillis());
+                        Get data = new Get();
+                        Get allUsers = new Get();
+                        ArrayList rowUserDatas = allUsers.getAll();
+                        for (int i = 0; i < rowUserDatas.size(); i++) {
+                            HashMap userdata = new HashMap();
+                            String rows = rowUserDatas.get(i) + "";
+                            String[] pairs = rows.split(", ");
+                            for (int j = 0; j < pairs.length; j++) {
+                                userdata.put(
+                                        pairs[j].split("=")[0].replace("{", "").replace("}", ""),
+                                        pairs[j].split("=")[1].replace("{", "").replace("}", "")
+                                );
+                            }
 //                        System.out.println("First data : " + userdata);
-                        Double alldebt = Double.parseDouble(userdata.get("amount") + "") + amount;
-                        DocumentReference allAmount = db.collection("Users").document(String.valueOf(userdata.get("uuid")));
-                        ApiFuture<WriteResult> allUpdate = allAmount.update("amount", alldebt);
-                        ApiFuture<WriteResult> writeDate = allAmount.update("updateAt", date);
+                            Double alldebt = Double.parseDouble(userdata.get("amount") + "") + amount;
+                            DocumentReference allAmount = db.collection("Users").document(String.valueOf(userdata.get("uuid")));
+                            ApiFuture<WriteResult> allUpdate = allAmount.update("amount", alldebt);
+                            ApiFuture<WriteResult> writeDate = allAmount.update("updateAt", date);
 //                        System.out.println("After Update : " + userdata);
+                        }
+
+                        Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
+                        Double debt = (Double.parseDouble((currentdata.get("student") + "")) * amount) + Double.parseDouble((currentdata.get("debt") + ""));
+
+                        DocumentReference currentAmount = db.collection("Statistics").document("amount");
+                        ApiFuture<WriteResult> writeResult = currentAmount.update("debt", debt);
+                        ApiFuture<WriteResult> writeDate = currentAmount.update("updateAt", date);
+                        new Log(TreasurerLogin.currentUser.getStudentId(), "Add Debt To Every One!", description, amount);
+                        new TreasurerDashboard().init();
+                        fr.dispose();
                     }
-
-                    Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
-                    Double debt = (Double.parseDouble((currentdata.get("student") + "")) * amount) + Double.parseDouble((currentdata.get("debt") + ""));
-
-                    DocumentReference currentAmount = db.collection("Statistics").document("amount");
-                    ApiFuture<WriteResult> writeResult = currentAmount.update("debt", debt);
-                    ApiFuture<WriteResult> writeDate = currentAmount.update("updateAt", date);
-                    new Log(TreasurerLogin.currentUser.getStudentId(), "Add Debt To Every One!", description, amount);
-                    new TreasurerDashboard().init();
-                    fr.dispose();
+                } catch (IndexOutOfBoundsException ex) {
+                    new PopUp("This SID is not in database.", "Payment fail.").error();
+                    ex.printStackTrace();
                 }
-            }catch (IndexOutOfBoundsException ex){
-                new PopUp("This SID is not in database.", "Payment fail.").error();
-                ex.printStackTrace();
+            }else{
+                new PopUp("The value cannot be a negative number!", "AddPayment Fail.").error();
             }
             // NP
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
