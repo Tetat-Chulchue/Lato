@@ -57,6 +57,8 @@ public class TreasurerLog implements ActionListener {
 //        fr.setResizable(false);
         fr.pack();
 
+        this.preload();
+
 //        TestAddData.addActionListener(this);
 
 //        Style --------------------------->
@@ -77,7 +79,7 @@ public class TreasurerLog implements ActionListener {
 
     public void preload() { // Preload Data form Database.
         Get getData = new Get();
-        ArrayList rowData = getData.getAll();
+        ArrayList rowData = getData.getLog();
         for (int i = 0; i < rowData.size(); i++) {
             HashMap data = new HashMap();
             String string =(String) rowData.get(i);
@@ -89,11 +91,11 @@ public class TreasurerLog implements ActionListener {
                 );
             }
             this.addData(
-                    (String) data.get("Name"),
-                    (String) data.get("Particular"),
-                    (String) data.get("Description"),
-                    Double.parseDouble((String) data.get("Amount")),
-                    (String) data.get("Timestamp")
+                    (String) data.get("name"),
+                    (String) data.get("particular"),
+                    (String) data.get("description"),
+                    Double.parseDouble(data.get("amount").toString()),
+                    (String) data.get("createAt")
             );
         }
     }

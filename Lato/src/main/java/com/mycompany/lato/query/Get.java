@@ -65,6 +65,31 @@ public class Get {
         }
         return null;
     }
+
+    public static ArrayList getLog() {
+        try {
+            Firestore db = FirestoreClient.getFirestore();
+            ArrayList data = new ArrayList();
+            HashMap object = new HashMap();
+            ApiFuture<QuerySnapshot> future = db.collection("Log").orderBy("no").get();
+            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+            for (QueryDocumentSnapshot document : documents) {
+                object.put("uuid", document.getId());
+                object.put("no", document.getData().get("no"));
+                object.put("particular", document.getData().get("particular"));
+                object.put("name", document.getData().get("name"));
+                object.put("amount", document.getData().get("amount"));
+                object.put("createAt", document.getData().get("createAt"));
+                object.put("description", document.getData().get("description"));
+                data.add(object.toString());
+            }
+            return data;
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
     public static HashMap getBySid(String target) {
         try {
             ArrayList<HashMap> data = new ArrayList();
