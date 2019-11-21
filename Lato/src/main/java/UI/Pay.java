@@ -129,7 +129,7 @@ public class Pay implements ActionListener {
                     Firestore db = FirestoreClient.getFirestore();
                     DocumentReference userRef = db.collection("Users").document(String.valueOf(user.get("uuid")));
                     ApiFuture<WriteResult> future = userRef.update("amount", debt);
-                    new Log("CURRENT_TREASURER", sid, description, amount);
+                    new Log(TreasurerLogin.currentUser.getName(), sid, description, amount);
                 }
             } catch (IndexOutOfBoundsException ex) {
                 new PopUp("This SID is not in database.", "Payment fail.").error();

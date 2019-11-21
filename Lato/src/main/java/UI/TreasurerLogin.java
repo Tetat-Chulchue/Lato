@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class TreasurerLogin implements ActionListener {
 
-    Treasurer currentUser;
+    public static Treasurer currentUser;
 
     //    Config ------->
     private int winW = 459;
@@ -119,13 +119,12 @@ public class TreasurerLogin implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
-//            String email = Treasurer.login(TF1.getText(), TF2.getText());
             String email = Treasurer.login(TF1.getText(), TF2.getText());
             if (email != null) {
                 // GET USER HERE //
                 Get userData = new Get();
                 Map<String, Object> user = userData.getByCollectionAndDocumentName("Treasurers", email);
-                currentUser = new Treasurer((String)user.get("name"), (String)user.get("lastname"), (String)user.get("studentId"));
+                this.currentUser = new Treasurer((String)user.get("name"), (String)user.get("lastname"), (String)user.get("studentId"));
                 TreasurerDashboard UI = new TreasurerDashboard();
                 UI.init();
                 fr.dispose();
