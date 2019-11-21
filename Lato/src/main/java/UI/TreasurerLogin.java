@@ -8,7 +8,7 @@ import java.awt.event.*;
 import java.util.Map;
 import javax.swing.*;
 
-public class TreasurerLogin implements ComponentListener, ActionListener {
+public class TreasurerLogin implements ActionListener {
 
     Treasurer currentUser;
 
@@ -82,14 +82,14 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         fr.pack();
 
         // Listener --------------------------->
-        fr.getContentPane().addComponentListener(this);
-        BTN_Back.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                OtherFR.setVisible(true);
-                fr.dispose();
-            }
-        });
+//        fr.getContentPane().addComponentListener(this);
+//        BTN_Back.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                OtherFR.setVisible(true);
+//                fr.dispose();
+//            }
+//        });
         // Listener --------------------------->
 
         // Style --------------------------->
@@ -124,27 +124,27 @@ public class TreasurerLogin implements ComponentListener, ActionListener {
         // Style --------------------------->
     }
 
-    @Override
-    public void componentResized(ComponentEvent componentEvent) {
-        LB1.setLocation((fr.getWidth()/2)-(LB1.getWidth()/2), 120);
-        btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 97);
-        boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 80);
-    }
-
-    @Override
-    public void componentMoved(ComponentEvent componentEvent) {
-
-    }
-
-    @Override
-    public void componentShown(ComponentEvent componentEvent) {
-
-    }
-
-    @Override
-    public void componentHidden(ComponentEvent componentEvent) {
-
-    }
+//    @Override
+//    public void componentResized(ComponentEvent componentEvent) {
+//        LB1.setLocation((fr.getWidth()/2)-(LB1.getWidth()/2), 120);
+//        btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 97);
+//        boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 80);
+//    }
+//
+//    @Override
+//    public void componentMoved(ComponentEvent componentEvent) {
+//
+//    }
+//
+//    @Override
+//    public void componentShown(ComponentEvent componentEvent) {
+//
+//    }
+//
+//    @Override
+//    public void componentHidden(ComponentEvent componentEvent) {
+//
+//    }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
