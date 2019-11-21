@@ -1,12 +1,13 @@
 package UI;
 
-import com.mycompany.lato.query.Get;
 import com.mycompany.lato.model.Treasurer;
+import com.mycompany.lato.query.Get;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Map;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Map;
 
 public class TreasurerLogin implements ActionListener {
 
@@ -88,14 +89,14 @@ public class TreasurerLogin implements ActionListener {
         LB1.setBounds(0, 0, 188, 60);
         LB1.setLocation((fr.getWidth()/2)-(LB1.getWidth()/2), 120);
         LB1.setFont(new Font("SansSerif", Font.PLAIN, 70));
-        LB1.setForeground(new Color(255, 203, 155));
+        LB1.setForeground(new Color(20, 255, 247));
 
         Bar_Top.setBackground(new Color(0, 53, 84));
 
         btn1.setBounds(0, 0, 112, 39);
         btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 97);
-        btn1.setBackground(Color.red);
-        BTN_Back.setForeground(new Color(255, 203, 155));
+        btn1.setBackground(new Color(20, 255, 247));
+        BTN_Back.setForeground(new Color(20, 255, 247));
         BTN_Back.setFont(new Font("SansSerif", Font.PLAIN, 40));
 
         boxContainer.setBounds(0, 0, 280, 130);
@@ -106,13 +107,13 @@ public class TreasurerLogin implements ActionListener {
         boxPass.setBackground(new Color(0, 53, 84));
 
         userText.setBackground(new Color(0, 53, 84));
-        userText.setForeground(new Color(255, 203, 155));
-        TF1.setBackground(new Color(96, 106, 106));
-        TF1.setForeground(new Color(255, 203, 155));
+        userText.setForeground(new Color(20, 255, 247));
+        TF1.setBackground(new Color(93, 93, 93));
+        TF1.setForeground(new Color(20, 255, 247));
         passText.setBackground(new Color(0, 53, 84));
-        passText.setForeground(new Color(255, 203, 155));
-        TF2.setBackground(new Color(96, 106, 106));
-        TF2.setForeground(new Color(255, 203, 155));
+        passText.setForeground(new Color(20, 255, 247));
+        TF2.setBackground(new Color(93, 93, 93));
+        TF2.setForeground(new Color(20, 255, 247));
         // Style --------------------------->
     }
 

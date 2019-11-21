@@ -154,33 +154,33 @@ public class UserDashboard implements ActionListener {
 //        BTN Listener --------------------------->
 
 //        Style --------------------------->
-        Bar.setBackground(new Color(39, 70, 68));
-        Bar_BTN.setBackground(new Color(39, 70, 68));
-        Bar_Forms.setBackground(new Color(39, 70, 68));
-        Bar_Lable_Top.setBackground(new Color(39, 70, 68));
-        Bar_BTN_Button.setBackground(new Color(39, 70, 68));
-        Amount_Student_Container.setBackground(new Color(39, 70, 68));
-        Amount_Student_Panel.setBackground(new Color(39, 70, 68));
-        Amount_Money_Container.setBackground(new Color(39, 70, 68));
-        Amount_Money_Panel.setBackground(new Color(39, 70, 68));
-        Amount_Debt_Container.setBackground(new Color(39, 70, 68));
-        Amount_Debt_Panel.setBackground(new Color(39, 70, 68));
-        Infor_Forms.setBackground(new Color(39, 70, 68));
-        Infor_Forms_Top.setBackground(new Color(39, 70, 68));
-        Infor_Forms_Buttom.setBackground(new Color(39, 70, 68));
-        Infor_Forms_Buttom_Left.setBackground(new Color(39, 70, 68));
-        Infor_Forms_Buttom_Right.setBackground(new Color(39, 70, 68));
+        Bar.setBackground(new Color(0, 53, 84));
+        Bar_BTN.setBackground(new Color(0, 53, 84));
+        Bar_Forms.setBackground(new Color(0, 53, 84));
+        Bar_Lable_Top.setBackground(new Color(0, 53, 84));
+        Bar_BTN_Button.setBackground(new Color(0, 53, 84));
+        Amount_Student_Container.setBackground(new Color(0, 53, 84));
+        Amount_Student_Panel.setBackground(new Color(0, 53, 84));
+        Amount_Money_Container.setBackground(new Color(0, 53, 84));
+        Amount_Money_Panel.setBackground(new Color(0, 53, 84));
+        Amount_Debt_Container.setBackground(new Color(0, 53, 84));
+        Amount_Debt_Panel.setBackground(new Color(0, 53, 84));
+        Infor_Forms.setBackground(new Color(0, 53, 84));
+        Infor_Forms_Top.setBackground(new Color(0, 53, 84));
+        Infor_Forms_Buttom.setBackground(new Color(0, 53, 84));
+        Infor_Forms_Buttom_Left.setBackground(new Color(0, 53, 84));
+        Infor_Forms_Buttom_Right.setBackground(new Color(0, 53, 84));
 
         Amount_Student_Text.setFont(new Font("SansSerif", Font.PLAIN, 17));
-        Amount_Student_Text.setForeground(new Color(255, 203, 155));
+        Amount_Student_Text.setForeground(new Color(68, 249, 255));
         Amount_Student.setFont(new Font("SansSerif", Font.PLAIN, 35));
-        Amount_Student.setForeground(new Color(68, 249, 255));
+        Amount_Student.setForeground(new Color(255, 145, 100));//
         Amount_Money_Text.setFont(new Font("SansSerif", Font.PLAIN, 17));
-        Amount_Money_Text.setForeground(new Color(255, 203, 155));
+        Amount_Money_Text.setForeground(new Color(68, 249, 255));
         Amount_Money.setFont(new Font("SansSerif", Font.PLAIN, 35));
         Amount_Money.setForeground(new Color(87, 255, 68));
         Amount_Debt_Text.setFont(new Font("SansSerif", Font.PLAIN, 17));
-        Amount_Debt_Text.setForeground(new Color(255, 203, 155));
+        Amount_Debt_Text.setForeground(new Color(68, 249, 255));
         Amount_Debt.setFont(new Font("SansSerif", Font.PLAIN, 35));
         Amount_Debt.setForeground(new Color(255, 106, 68));
         Table.setForeground(new Color(255, 106, 68));
@@ -188,16 +188,16 @@ public class UserDashboard implements ActionListener {
 
         BTN_Log.setBackground(new Color(68, 118, 255));
         BTN_Log.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        BTN_Log.setForeground(new Color(16, 100, 102));
+        BTN_Log.setForeground(new Color(0, 53, 84));
 
         table.getColumnModel().getColumn(0).setPreferredWidth(0);
-        table.getTableHeader().setBackground(new Color(16, 100, 102));
-        table.getTableHeader().setForeground(new Color(255, 203, 155));
+        table.getTableHeader().setBackground(new Color(6, 141, 157));
+        table.getTableHeader().setForeground(new Color(68, 249, 255));
         table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 13));
         table.setFont(new Font("SansSerif", Font.PLAIN, 15));
         table.setRowHeight(24);
-        table.setBackground(new Color(16, 100, 102));
-        table.setForeground(new Color(255, 203, 155));
+        table.setBackground(new Color(6, 141, 157));
+        table.setForeground(new Color(68, 249, 255));
 //        Style --------------------------->
     }
 

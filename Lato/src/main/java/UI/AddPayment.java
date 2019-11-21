@@ -62,18 +62,18 @@ public class AddPayment implements ActionListener {
 //        Listener --------------------------->
 
 //        Style --------------------------->
-        Forms_Container.setBackground(new Color(39, 70, 68));
-        Forms_Top.setBackground(new Color(39, 70, 68));
-        Forms_Bottom.setBackground(new Color(39, 70, 68));
-        BTN_Container.setBackground(new Color(39, 70, 68));
+        Forms_Container.setBackground(new Color(0, 53, 84));
+        Forms_Top.setBackground(new Color(0, 53, 84));
+        Forms_Bottom.setBackground(new Color(0, 53, 84));
+        BTN_Container.setBackground(new Color(0, 53, 84));
 
-        Amount_Text.setForeground(new Color(255, 203, 155));
-        Description_Text.setForeground(new Color(255, 203, 155));
+        Amount_Text.setForeground(new Color(68, 249, 255));
+        Description_Text.setForeground(new Color(68, 249, 255));
 
         Amount.setBackground(new Color(96, 106, 106));
-        Amount.setForeground(new Color(255, 203, 155));
+        Amount.setForeground(new Color(68, 249, 255));
         Description.setBackground(new Color(96, 106, 106));
-        Description.setForeground(new Color(255, 203, 155));
+        Description.setForeground(new Color(68, 249, 255));
 
         BTN_Confirm.setBackground(new Color(87, 255, 68));
         BTN_Confirm.setFont(new Font("SansSerif", Font.PLAIN, 20));

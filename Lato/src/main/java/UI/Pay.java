@@ -86,27 +86,27 @@ public class Pay implements ActionListener {
 //        BTN Listener --------------------------->
 
 //        Style --------------------------->
-        BTN_Panel.setBackground(new Color(39, 70, 68));
-        Forms_Panel_Container.setBackground(new Color(39, 70, 68));
-        Forms_Panel_Top.setBackground(new Color(39, 70, 68));
-        Forms_Panel_Button.setBackground(new Color(39, 70, 68));
-        Forms_Panel_Top_Left.setBackground(new Color(39, 70, 68));
-        Forms_Panel_Top_Right.setBackground(new Color(39, 70, 68));
+        BTN_Panel.setBackground(new Color(0, 53, 84));
+        Forms_Panel_Container.setBackground(new Color(0, 53, 84));
+        Forms_Panel_Top.setBackground(new Color(0, 53, 84));
+        Forms_Panel_Button.setBackground(new Color(0, 53, 84));
+        Forms_Panel_Top_Left.setBackground(new Color(0, 53, 84));
+        Forms_Panel_Top_Right.setBackground(new Color(0, 53, 84));
 
-        SID_Text.setForeground(new Color(255, 203, 155));
-        Amount_Text.setForeground(new Color(255, 203, 155));
-        Description_Text.setForeground(new Color(255, 203, 155));
+        SID_Text.setForeground(new Color(20, 255, 247));
+        Amount_Text.setForeground(new Color(20, 255, 247));
+        Description_Text.setForeground(new Color(20, 255, 247));
 
         SID.setBackground(new Color(96, 106, 106));
-        SID.setForeground(new Color(255, 203, 155));
+        SID.setForeground(new Color(20, 255, 247));
         Amount.setBackground(new Color(96, 106, 106));
-        Amount.setForeground(new Color(255, 203, 155));
+        Amount.setForeground(new Color(20, 255, 247));
         Description.setBackground(new Color(96, 106, 106));
-        Description.setForeground(new Color(255, 203, 155));
+        Description.setForeground(new Color(20, 255, 247));
 
         BTN_Confirm.setBackground(new Color(87, 255, 68));
         BTN_Confirm.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        BTN_Cancel.setBackground(new Color(255, 106, 68));
+        BTN_Cancel.setBackground(new Color(255, 66, 54));
         BTN_Cancel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 //        Style --------------------------->
     }
