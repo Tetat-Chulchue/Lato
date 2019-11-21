@@ -1,11 +1,9 @@
 package UI;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.*;
 
 public class Login implements ActionListener {
     private int winW = 459;
@@ -37,7 +35,7 @@ public class Login implements ActionListener {
         jLabel.setBounds(0, 0, 188, 60);
         jLabel.setLocation((fr.getWidth()/2)-(jLabel.getWidth()/2), 120);
         jLabel.setFont(new Font("SansSerif", Font.PLAIN, 70));
-        jLabel.setForeground(new Color(255, 203, 155));
+        jLabel.setForeground(new Color(20, 255, 247));
 
         jLabe2 = new JLabel("please select");
         jLabe0 = new JLabel(" ");
@@ -93,13 +91,13 @@ public class Login implements ActionListener {
 
         btn1.setBounds(0, 0, 112, 39);
         btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 0);
-        btn1.setBackground(new Color(255, 203, 155));
+        btn1.setBackground(new Color(20, 255, 247));
 
         btn2.setBounds(0, 0, 112, 39);
         btn2.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 200);
-        btn2.setBackground(new Color(255, 203, 155));
+        btn2.setBackground(new Color(20, 255, 247));
 
-        jLabe0.setForeground(new Color(255, 203, 155));
+        jLabe0.setForeground(new Color(20, 255, 247));
         jLabe0.setFont(new Font("SansSerif", Font.PLAIN, 40));
 
         boxContainer.setBounds(0, 0, 280, 130);

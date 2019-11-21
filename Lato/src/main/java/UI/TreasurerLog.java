@@ -60,13 +60,13 @@ public class TreasurerLog implements ActionListener {
 //        TestAddData.addActionListener(this);
 
 //        Style --------------------------->
-        Table.getTableHeader().setBackground(new Color(16, 100, 102));
-        Table.getTableHeader().setForeground(new Color(255, 203, 155));
+        Table.getTableHeader().setBackground(new Color(0, 53, 84));
+        Table.getTableHeader().setForeground(new Color(20, 255, 247));
         Table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 13));
         Table.setFont(new Font("SansSerif", Font.PLAIN, 15));
         Table.setRowHeight(24);
-        Table.setBackground(new Color(16, 100, 102));
-        Table.setForeground(new Color(255, 203, 155));
+        Table.setBackground(new Color(0, 53, 84));
+        Table.setForeground(new Color(20, 255, 247));
         Table.getColumnModel().getColumn(0).setPreferredWidth(40);
 //        Style --------------------------->
     }

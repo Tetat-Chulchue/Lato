@@ -1,16 +1,17 @@
 package UI;
 
-import com.mycompany.lato.query.Get;
 import com.mycompany.lato.model.Treasurer;
+import com.mycompany.lato.query.Get;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Map;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Map;
 
 public class TreasurerLogin implements ActionListener {
 
-    Treasurer currentUser;
+    public static Treasurer currentUser;
 
     //    Config ------->
     private int winW = 459;
@@ -88,7 +89,7 @@ public class TreasurerLogin implements ActionListener {
         LB1.setBounds(0, 0, 188, 60);
         LB1.setLocation((fr.getWidth()/2)-(LB1.getWidth()/2), 120);
         LB1.setFont(new Font("SansSerif", Font.PLAIN, 70));
-        LB1.setForeground(new Color(255, 203, 155));
+        LB1.setForeground(new Color(20, 255, 247));
 
         Bar_Top.setBackground(new Color(0, 53, 84));
 
@@ -107,25 +108,24 @@ public class TreasurerLogin implements ActionListener {
         boxPass.setBackground(new Color(0, 53, 84));
 
         userText.setBackground(new Color(0, 53, 84));
-        userText.setForeground(new Color(255, 203, 155));
-        TF1.setBackground(new Color(96, 106, 106));
-        TF1.setForeground(new Color(255, 203, 155));
+        userText.setForeground(new Color(20, 255, 247));
+        TF1.setBackground(new Color(93, 93, 93));
+        TF1.setForeground(new Color(20, 255, 247));
         passText.setBackground(new Color(0, 53, 84));
-        passText.setForeground(new Color(255, 203, 155));
-        TF2.setBackground(new Color(96, 106, 106));
-        TF2.setForeground(new Color(255, 203, 155));
+        passText.setForeground(new Color(20, 255, 247));
+        TF2.setBackground(new Color(93, 93, 93));
+        TF2.setForeground(new Color(20, 255, 247));
         // Style --------------------------->
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
-//            String email = Treasurer.login(TF1.getText(), TF2.getText());
             String email = Treasurer.login(TF1.getText(), TF2.getText());
             if (email != null) {
                 // GET USER HERE //
                 Get userData = new Get();
                 Map<String, Object> user = userData.getByCollectionAndDocumentName("Treasurers", email);
-                currentUser = new Treasurer((String)user.get("name"), (String)user.get("lastname"), (String)user.get("studentId"));
+                this.currentUser = new Treasurer((String)user.get("name"), (String)user.get("lastname"), (String)user.get("studentId"));
                 TreasurerDashboard UI = new TreasurerDashboard();
                 UI.init();
                 fr.dispose();

@@ -46,16 +46,16 @@ public class Confirm implements ActionListener{
 //        Listener --------------------------->
 
 //        Style --------------------------->
-        Text.setForeground(new Color(255, 203, 155));
+        Text.setForeground(new Color(20, 255, 247));
         Text.setLocation((fr.getWidth()/2)-(Text.getWidth()/2),0);;
         Text.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        Forms_Container.setBackground(new Color(39, 70, 68));
-        Forms_Bottom.setBackground(new Color(39, 70, 68));
-        BTN_Container.setBackground(new Color(39, 70, 68));
+        Forms_Container.setBackground(new Color(0, 53, 84));
+        Forms_Bottom.setBackground(new Color(0, 53, 84));
+        BTN_Container.setBackground(new Color(0, 53, 84));
 
         BTN_Confirm.setBackground(new Color(87, 255, 68));
         BTN_Confirm.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        BTN_Cancel.setBackground(new Color(255, 106, 68));
+        BTN_Cancel.setBackground(new Color(255, 66, 54));
         BTN_Cancel.setFont(new Font("SansSerif", Font.PLAIN, 20));
 //        Style --------------------------->
     }
