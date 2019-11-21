@@ -50,7 +50,7 @@ public class Update {
             data.put("money", money);
             data.put("student", student);
             data.put("updateAt", formatter.format(date));
-            ApiFuture<WriteResult> writeResult = db.collection("Statistics").document("Amount").set(data, SetOptions.merge());
+            ApiFuture<WriteResult> writeResult = db.collection("Statistics").document("amount").set(data, SetOptions.merge());
 
             System.out.println("Update time : " + writeResult.get().getUpdateTime());
         } catch (InterruptedException | ExecutionException e) {
