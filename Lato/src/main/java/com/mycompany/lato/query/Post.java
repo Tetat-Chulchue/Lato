@@ -66,10 +66,11 @@ public class Post {
         }
     };
 
-    public static void addLog(String name, String particular, String description, double amount, String timestamp) {
+    public static void addLog(int counter, String name, String particular, String description, double amount, String timestamp) {
         try {
             Firestore db = FirestoreClient.getFirestore();
             Map<String, Object> data = new HashMap<>();
+            data.put("no", counter);
             data.put("name", name);
             data.put("particular", particular);
             data.put("description", description);
