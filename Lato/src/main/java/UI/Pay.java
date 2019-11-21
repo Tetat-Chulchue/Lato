@@ -1,5 +1,11 @@
 package UI;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.WriteResult;
+import com.google.firebase.cloud.FirestoreClient;
+import com.mycompany.lato.model.Log;
 import com.mycompany.lato.query.Get;
 
 import javax.swing.*;
@@ -113,19 +119,22 @@ public class Pay implements ActionListener {
             String description = Description.getText();
             int amount = Integer.parseInt(Amount.getText());
 
-            try {
-                HashMap user = Get.getBySid(sid);
+            boolean confirm = new PopUp("Are you sure", "confirm").question();
 
+            try {
+                if (confirm) {
+                    HashMap user = Get.getBySid(sid);
+                    double debt = Double.parseDouble((user.get("amount").toString())) - amount;
+
+                    Firestore db = FirestoreClient.getFirestore();
+                    DocumentReference userRef = db.collection("Users").document(String.valueOf(user.get("uuid")));
+                    ApiFuture<WriteResult> future = userRef.update("amount", debt);
+                    new Log("CURRENT_TREASURER", sid, description, amount);
+                }
             } catch (IndexOutOfBoundsException ex) {
                 new PopUp("This SID is not in database.", "Payment fail.").error();
                 ex.printStackTrace();
             }
-
-
-            // --------- Next Page ---------
-
-            Confirm UI = new Confirm();
-            UI.init(fr);
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
             Other.setVisible(true);
             fr.dispose();
