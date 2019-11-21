@@ -16,7 +16,6 @@ public class TreasurerDashboard implements ActionListener {
     private int winW = 1396;
     private int winH = 885;
     private String[] columnName = {
-            "No.",
             "SID",
             "First Name",
             "Last Name",
@@ -302,7 +301,7 @@ public class TreasurerDashboard implements ActionListener {
     }
 
     public void addData(int SID, String FN, String LN, double AM, String crateAt, String updateAt) { // Add Data to Table
-        model.addRow(new Object[] {table.getRowCount()+1, SID, FN, LN, AM, crateAt, updateAt});
+        model.addRow(new Object[] {SID, FN, LN, AM, crateAt, updateAt});
     }
 
     public void preload() { // Preload Data form Database.
