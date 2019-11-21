@@ -71,7 +71,7 @@ public class Get {
             Firestore db = FirestoreClient.getFirestore();
             ArrayList data = new ArrayList();
             HashMap object = new HashMap();
-            ApiFuture<QuerySnapshot> future = db.collection("Log").orderBy("no").get();
+            ApiFuture<QuerySnapshot> future = db.collection("Log").orderBy("no", Query.Direction.DESCENDING).get();
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
             for (QueryDocumentSnapshot document : documents) {
                 object.put("uuid", document.getId());
