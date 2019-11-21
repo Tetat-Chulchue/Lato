@@ -131,7 +131,7 @@ public class AddPayment implements ActionListener {
                     }
 
                     Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
-                    Double debt = (Double.parseDouble((currentdata.get("debt") + "")) + amount) * Double.parseDouble((currentdata.get("student") + ""));
+                    Double debt = (Double.parseDouble((currentdata.get("student") + "")) * amount) + Double.parseDouble((currentdata.get("debt") + ""));
 
                     DocumentReference currentAmount = db.collection("Statistics").document("amount");
                     ApiFuture<WriteResult> writeResult = currentAmount.update("debt", debt);
