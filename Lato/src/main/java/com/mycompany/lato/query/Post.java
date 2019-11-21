@@ -82,4 +82,22 @@ public class Post {
         }
     }
 
+//    public static void addStatistic(Double debt, Double money, Double student){
+//        try {
+//            Firestore db = FirestoreClient.getFirestore();
+//
+//            SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+//            Date date = new Date(System.currentTimeMillis());
+//
+//            Map<String, Object> data = new HashMap<>();
+//            data.put("debt", debt);
+//            data.put("money", money);
+//            data.put("student", student);
+//            data.put("updateAt", formatter.format(date));
+//            ApiFuture<DocumentReference> addedDocRef = db.collection("Sta").add(data);
+//        }catch (InterruptedException | ExecutionException e){
+//            System.out.println(e);
+//        }
+//    }
+
 }
