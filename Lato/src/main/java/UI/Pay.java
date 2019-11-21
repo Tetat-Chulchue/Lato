@@ -130,7 +130,7 @@ public class Pay implements ActionListener {
                     Firestore db = FirestoreClient.getFirestore();
                     DocumentReference userRef = db.collection("Users").document(String.valueOf(user.get("uuid")));
                     ApiFuture<WriteResult> future = userRef.update("amount", debt);
-                    new Log(TreasurerLogin.currentUser.getName(), sid, description, amount);
+                    new Log(TreasurerLogin.currentUser.getStudentId(), sid, description, amount);
                     new TreasurerDashboard().init();
                     fr.dispose();
                 }

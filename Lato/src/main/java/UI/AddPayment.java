@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -106,15 +107,36 @@ public class AddPayment implements ActionListener {
             boolean confirm = new PopUp("Are you sure", "confirm").question();
             try {
                 if(confirm) {
+                    Firestore db = FirestoreClient.getFirestore();
                     Date date = new Date(System.currentTimeMillis());
                     Get data = new Get();
+                    Get allUsers = new Get();
+                    ArrayList rowUserDatas = allUsers.getAll();
+                    for (int i = 0; i < rowUserDatas.size();i++){
+                        HashMap userdata = new HashMap();
+                        String rows = rowUserDatas.get(i) + "";
+                        String[] pairs = rows.split(", ");
+                        for (int j = 0; j < pairs.length; j++){
+                            userdata.put(
+                                    pairs[j].split("=")[0].replace("{", "").replace("}", ""),
+                                    pairs[j].split("=")[1].replace("{", "").replace("}", "")
+                            );
+                        }
+//                        System.out.println("First data : " + userdata);
+                        Double alldebt = Double.parseDouble(userdata.get("amount") + "") + amount;
+                        DocumentReference allAmount = db.collection("Users").document(String.valueOf(userdata.get("uuid")));
+                        ApiFuture<WriteResult> allUpdate = allAmount.update("amount", alldebt);
+                        ApiFuture<WriteResult> writeDate = allAmount.update("updateAt", date);
+//                        System.out.println("After Update : " + userdata);
+                    }
+
                     Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
                     Double debt = Double.parseDouble((currentdata.get("debt") + "")) + amount;
-                    Firestore db = FirestoreClient.getFirestore();
+
                     DocumentReference currentAmount = db.collection("Statistics").document("amount");
                     ApiFuture<WriteResult> writeResult = currentAmount.update("debt", debt);
                     ApiFuture<WriteResult> writeDate = currentAmount.update("updateAt", date);
-                    new Log("TREASURER", "-", description, amount);
+                    new Log(TreasurerLogin.currentUser.getStudentId(), "-", description, amount);
                     new TreasurerDashboard().init();
                     fr.dispose();
                 }
