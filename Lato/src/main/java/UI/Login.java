@@ -31,14 +31,15 @@ public class Login implements ActionListener {
         btn2.setFont(new Font("Serif", Font.PLAIN, 35));
         btn2.addActionListener(this);
 
+        jLabe0 = new JLabel(" ");
+
         jLabel = new JLabel("LATO");
         jLabel.setBounds(0, 0, 188, 60);
         jLabel.setLocation((fr.getWidth()/2)-(jLabel.getWidth()/2), 120);
         jLabel.setFont(new Font("SansSerif", Font.PLAIN, 70));
         jLabel.setForeground(new Color(20, 255, 247));
 
-        jLabe2 = new JLabel("please select");
-        jLabe0 = new JLabel(" ");
+        jLabe2 = new JLabel("Please select");
 
         boxContainer.setLayout(new GridLayout(2, 1));
         boxUser.setLayout(new GridLayout(2, 1));
@@ -82,12 +83,12 @@ public class Login implements ActionListener {
         jLabel.setBounds(0, 0, 188, 60);
         jLabel.setLocation((fr.getWidth()/2)-(jLabel.getWidth()/2), 120);
         jLabel.setFont(new Font("SansSerif", Font.PLAIN, 70));
-        jLabel.setForeground(new Color(0, 166, 251));
+        jLabel.setForeground(new Color(20, 255, 247));
 
         jLabe2.setBounds(0, 0, 188, 60);
         jLabe2.setLocation((fr.getWidth()/2)-(jLabel.getWidth()/2), 0);
         jLabe2.setFont(new Font("SansSerif", Font.PLAIN, 32));
-        jLabe2.setForeground(new Color(0, 166, 251));
+        jLabe2.setForeground(new Color(20, 255, 247));
 
         Bar_Top.setBackground(new Color(0, 53, 84));
 
@@ -103,7 +104,7 @@ public class Login implements ActionListener {
         jLabe0.setFont(new Font("SansSerif", Font.PLAIN, 40));
 
         boxContainer.setBounds(0, 0, 280, 130);
-        boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 80);
+        boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 100);
         boxContainer.setBackground(new Color(0, 53, 84));
 
         boxUser.setBackground(new Color(0, 53, 84));

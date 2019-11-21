@@ -108,12 +108,12 @@ public class TreasurerLogin implements ActionListener {
         btn1.setBounds(0, 0, 112, 39);
         btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 97);
         btn1.setBackground(new Color(96, 106, 106));
-        btn1.setForeground(new Color(255, 203, 155));
-        BTN_Back.setForeground(new Color(255, 203, 155));
+        btn1.setForeground(new Color(20, 255, 247));
+        BTN_Back.setForeground(new Color(20, 255, 247));
         BTN_Back.setFont(new Font("SansSerif", Font.PLAIN, 40));
 
         boxContainer.setBounds(0, 0, 280, 130);
-        boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 80);
+        boxContainer.setLocation((fr.getWidth()/2)-(boxContainer.getWidth()/2), 70);
         boxContainer.setBackground(new Color(0, 53, 84));
 
         boxUser.setBackground(new Color(0, 53, 84));
