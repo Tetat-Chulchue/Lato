@@ -131,12 +131,12 @@ public class AddPayment implements ActionListener {
                     }
 
                     Map<String, Object> currentdata = data.getByCollectionAndDocumentName("Statistics", "amount");
-                    Double debt = Double.parseDouble((currentdata.get("debt") + "")) + amount;
+                    Double debt = (Double.parseDouble((currentdata.get("debt") + "")) + amount) * Double.parseDouble((currentdata.get("student") + ""));
 
                     DocumentReference currentAmount = db.collection("Statistics").document("amount");
                     ApiFuture<WriteResult> writeResult = currentAmount.update("debt", debt);
                     ApiFuture<WriteResult> writeDate = currentAmount.update("updateAt", date);
-                    new Log(TreasurerLogin.currentUser.getStudentId(), "-", description, amount);
+                    new Log(TreasurerLogin.currentUser.getStudentId(), "Add Debt To Every One!", description, amount);
                     new TreasurerDashboard().init();
                     fr.dispose();
                 }
