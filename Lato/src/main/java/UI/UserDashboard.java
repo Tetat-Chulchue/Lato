@@ -193,12 +193,12 @@ public class UserDashboard implements ActionListener {
         BTN_Log.setForeground(new Color(0, 53, 84));
 
         table.getColumnModel().getColumn(0).setPreferredWidth(0);
-        table.getTableHeader().setBackground(new Color(6, 141, 157));
+        table.getTableHeader().setBackground(new Color(0, 53, 84));
         table.getTableHeader().setForeground(new Color(68, 249, 255));
         table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 13));
         table.setFont(new Font("SansSerif", Font.PLAIN, 15));
         table.setRowHeight(24);
-        table.setBackground(new Color(6, 141, 157));
+        table.setBackground(new Color(0, 53, 84));
         table.setForeground(new Color(68, 249, 255));
 //        Style --------------------------->
     }
