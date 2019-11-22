@@ -123,13 +123,17 @@ public class Pay implements ActionListener {
                 super("Invalid Amount");
             }
         }
-
         if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
 
             String sid = SID.getText();
             String description = Description.getText();
-            int amount = Integer.parseInt(Amount.getText());
-
+            double amount = 0;
+            try {
+                amount = Double.parseDouble(Amount.getText());
+            } catch (NumberFormatException ex) {
+                new PopUp("Invalid amount", "Invalid amount").error();
+                return;
+            }
             if (amount <= 0) {
                 new PopUp("Can't make a transaction with a negative number", "Negative Payment").error();
             } else {
@@ -171,8 +175,6 @@ public class Pay implements ActionListener {
                     new PopUp("This SID is not in database.", "SID not found").error();
                 } catch (NullPointerException ex) {
                     ex.printStackTrace();
-                } catch (NumberFormatException ex) {
-                    new PopUp("Invalid amount", "Invalid amount").error();
                 } catch (InvalidAmountException ex) {
                     new PopUp("Payment exceed current debt", "Invalid amount").error();
                 }
