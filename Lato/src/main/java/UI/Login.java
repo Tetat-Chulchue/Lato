@@ -43,8 +43,8 @@ public class Login implements ActionListener {
         jLabe2 = new JLabel("Please select");
 
         boxContainer.setLayout(new GridLayout(2, 1));
-        boxUser.setLayout(new GridLayout(2, 1));
-        boxTreasurer.setLayout(new GridLayout(2, 1));
+        boxUser.setLayout(new GridLayout(1, 1));
+        boxTreasurer.setLayout(new GridLayout(1, 1));
         boxUser.add(btn1);
         boxTreasurer.add(btn2);
         boxContainer.add(boxUser);
@@ -58,6 +58,7 @@ public class Login implements ActionListener {
         P2.add(jLabe2);
         P2.add(boxContainer);
         P2.setBackground(new Color(0, 53, 84));
+        P2.setLocation( (fr.getWidth()/2)-(jLabel.getWidth()/2), 0);
 
         P3.setLayout(null);
         P3.setBackground(new Color(0, 53, 84));
@@ -67,10 +68,10 @@ public class Login implements ActionListener {
         Bar_Top.setLayout(new BorderLayout());
         Bar_Top.add(jLabe0);
         fr.add(Bar_Top, BorderLayout.NORTH);
-        Container.setLayout(new GridLayout(3, 1));
+        Container.setLayout(new GridLayout(2, 1));
         Container.add(P1);
         Container.add(P2);
-        Container.add(P3);
+//        Container.add(P3);
         fr.add(Container, BorderLayout.CENTER);
 
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,7 +88,7 @@ public class Login implements ActionListener {
         jLabel.setFont(new Font("SansSerif", Font.PLAIN, 70));
         jLabel.setForeground(new Color(20, 255, 247));
 
-        jLabe2.setBounds(0, 0, 188, 60);
+        jLabe2.setBounds(0, 0, 200, 60);
         jLabe2.setLocation((fr.getWidth()/2)-(jLabel.getWidth()/2), 0);
         jLabe2.setFont(new Font("SansSerif", Font.PLAIN, 32));
         jLabe2.setForeground(new Color(20, 255, 247));
@@ -97,10 +98,14 @@ public class Login implements ActionListener {
         btn1.setBounds(0, 0, 112, 39);
         btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 0);
         btn1.setBackground(new Color(20, 255, 247));
+        btn1.setFont(new Font("SansSerif", Font.PLAIN, 32));
+        btn1.setForeground(new Color(0, 53, 84));
 
         btn2.setBounds(0, 0, 112, 39);
         btn2.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 200);
         btn2.setBackground(new Color(20, 255, 247));
+        btn2.setFont(new Font("SansSerif", Font.PLAIN, 32));
+        btn2.setForeground(new Color(0, 53, 84));
 
         jLabe0.setForeground(new Color(20, 255, 247));
         jLabe0.setFont(new Font("SansSerif", Font.PLAIN, 40));

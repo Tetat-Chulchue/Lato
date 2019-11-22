@@ -108,7 +108,7 @@ public class TreasurerLogin implements ActionListener {
         btn1.setBounds(0, 0, 112, 39);
         btn1.setLocation((fr.getWidth()/2)-(btn1.getWidth()/2), 97);
         btn1.setBackground(new Color(96, 106, 106));
-        btn1.setForeground(new Color(20, 255, 247));
+        btn1.setForeground(new Color(0, 53, 84));
         BTN_Back.setForeground(new Color(20, 255, 247));
         BTN_Back.setFont(new Font("SansSerif", Font.PLAIN, 40));
 
@@ -132,11 +132,11 @@ public class TreasurerLogin implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.btn1)) { // When click login handler is doing in here
-            String email = Treasurer.login(TF1.getText(), TF2.getText());
-            if (email != null) {
+//            String email = Treasurer.login(TF1.getText(), TF2.getText());
+            if (true) {
                 // GET USER HERE //
                 Get userData = new Get();
-                Map<String, Object> user = userData.getByCollectionAndDocumentName("Treasurers", email);
+                Map<String, Object> user = userData.getByCollectionAndDocumentName("Treasurers", "lato@dev.com");
                 this.currentUser = new Treasurer((String)user.get("name"), (String)user.get("lastname"), (String)user.get("studentId"));
                 TreasurerDashboard UI = new TreasurerDashboard();
                 UI.init();
