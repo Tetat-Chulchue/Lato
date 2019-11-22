@@ -31,7 +31,7 @@ public class Delete {
             Firestore db = FirestoreClient.getFirestore();
             HashMap user = Get.getBySid(sid);
             System.out.println((String)user.get("uuid"));
-            ApiFuture<WriteResult> writeResult = db.collection("users").document((String)user.get("uuid")).delete();
+            ApiFuture<WriteResult> writeResult = db.collection("Users").document((String)user.get("uuid")).delete();
             System.out.println("Update time : " + writeResult.get().getUpdateTime());
 
             Map<String, Object> currentdata = Get.getByCollectionAndDocumentName("Statistics", "amount");
