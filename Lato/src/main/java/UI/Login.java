@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class Login implements ActionListener {
     private int winW = 459;
@@ -75,6 +76,7 @@ public class Login implements ActionListener {
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
+        fr.setIconImage(new ImageIcon("icon.png").getImage());
         fr.setPreferredSize(new Dimension(winW, winH));
         fr.setVisible(true);
         fr.setResizable(false);
