@@ -143,6 +143,8 @@ public class UserDashboard implements ActionListener {
         this.preload();
 
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
         fr.setPreferredSize(new Dimension(winW, winH));
         fr.setVisible(true);
 //        fr.setResizable(false);
@@ -203,7 +205,7 @@ public class UserDashboard implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this.BTN_Log)) { //Button See log
-            TreasurerLog UI = new TreasurerLog();
+            Log UI = new Log();
             UI.init();
         }
     }

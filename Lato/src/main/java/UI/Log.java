@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TreasurerLog implements ActionListener {
+public class Log implements ActionListener {
 //    Config ------->
     private int winW = 1000;
     private int winH = 600;

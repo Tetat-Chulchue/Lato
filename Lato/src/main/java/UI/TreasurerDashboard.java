@@ -293,7 +293,7 @@ public class TreasurerDashboard implements ActionListener {
             UI.init();
             fr.dispose();
         } else if (e.getSource().equals(this.BTN_Log)) { //Button See log
-            TreasurerLog UI = new TreasurerLog();
+            Log UI = new Log();
             UI.init();
         } else if (e.getSource().equals(this.BTN_Add)) { //Button Add
             if(new PopUp("Are you sure", "confirm").question()){
