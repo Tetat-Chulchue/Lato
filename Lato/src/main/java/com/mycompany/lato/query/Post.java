@@ -5,9 +5,11 @@
  */
 package com.mycompany.lato.query;
 
+import UI.TreasurerLogin;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
+import com.mycompany.lato.model.Log;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -65,6 +67,7 @@ public class Post {
             Map<String, Object> currentdata = Get.getByCollectionAndDocumentName("Statistics", "amount");
             int student = Integer.parseInt(currentdata.get("student")+"")+1;
             Update.updateStatistic(Double.parseDouble(currentdata.get("debt")+""), Double.parseDouble(currentdata.get("money")+""), student);
+            new Log(TreasurerLogin.currentUser.getStudentId(), "Add user "+sid, "-",0.0);
             return true;
         }
     };

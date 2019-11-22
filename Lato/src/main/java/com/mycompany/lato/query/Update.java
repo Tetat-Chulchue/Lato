@@ -5,11 +5,14 @@
  */
 package com.mycompany.lato.query;
 
+import UI.TreasurerLogin;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.SetOptions;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
+import com.mycompany.lato.model.Log;
+
 import java.util.Date;
 
 import java.io.IOException;
@@ -70,6 +73,7 @@ public class Update {
             data.put("updateAt", formatter.format(date));
             ApiFuture<WriteResult> writeResult = db.collection("Users").document((String)user.get("uuid")).set(data, SetOptions.merge());
             System.out.println("Update time : " + writeResult.get().getUpdateTime());
+            new Log(TreasurerLogin.currentUser.getStudentId(), "Update user "+sid, "-",0.0);
             return true;
         } catch (InterruptedException | ExecutionException e) {
             System.out.println(e);

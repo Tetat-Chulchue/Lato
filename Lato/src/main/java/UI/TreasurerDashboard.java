@@ -1,6 +1,9 @@
 package UI;
 
+import com.mycompany.lato.query.Delete;
 import com.mycompany.lato.query.Get;
+import com.mycompany.lato.query.Post;
+import com.mycompany.lato.query.Update;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -293,10 +296,23 @@ public class TreasurerDashboard implements ActionListener {
             TreasurerLog UI = new TreasurerLog();
             UI.init();
         } else if (e.getSource().equals(this.BTN_Add)) { //Button Add
+            if(new PopUp("Are you sure", "confirm").question() && Post.addUser(SID_Field.getText(), First_Name_Field.getText(), Last_Name_Field.getText())){
+                //Added
+            } else {
+                // Can't Add
+            }
         } else if (e.getSource().equals(this.BTN_Update)) { //Button Update
-
+            if(new PopUp("Are you sure", "confirm").question() && Update.updateUser(SID_Field.getText(), First_Name_Field.getText(), Last_Name_Field.getText())){
+                //Updated
+            } else {
+                // Can't Update
+            }
         } else if (e.getSource().equals(this.BTN_Delete)) { //Button Delete
-
+            if(new PopUp("Are you sure", "confirm").question() && Delete.deleteUser(SID_Field.getText())){
+                //Deleted
+            } else {
+                // Can't Delete
+            }
         }
     }
 
