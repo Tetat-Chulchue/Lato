@@ -8,6 +8,7 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import com.mycompany.lato.model.Log;
 import com.mycompany.lato.query.Get;
+import sun.security.krb5.internal.crypto.Des;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,7 +39,7 @@ public class AddPayment implements ActionListener {
         Forms_Top = new JPanel();
         Forms_Bottom = new JPanel();
         BTN_Container = new JPanel();
-        Description = new JTextArea();
+        Description = new JTextArea( );
         Amount = new JTextField();
         Amount_Text = new JLabel("Amount");
         Description_Text = new JLabel("Description");
@@ -101,11 +102,25 @@ public class AddPayment implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
-            int amount = Integer.parseInt(Amount.getText());
-            String description = Description.getText();
+            Double amount;
+            String description;
+
+            if (Description.getText().equals("")){
+                description = "-";
+            }else {
+                description = Description.getText();
+            }
+
+            System.out.println(description);
+            try{
+                amount = Double.parseDouble(Amount.getText());
+            }catch (NumberFormatException ex){
+                new PopUp("Invalid amount", "Invalid amount").warning();
+                return;
+            }
 
             boolean confirm = new PopUp("Are you sure", "confirm").question();
-            if(amount > 0) {
+            if(amount >= 0) {
                 try {
                     if (confirm) {
                         Firestore db = FirestoreClient.getFirestore();
@@ -141,8 +156,7 @@ public class AddPayment implements ActionListener {
                         new TreasurerDashboard().init();
                         fr.dispose();
                     }
-                } catch (IndexOutOfBoundsException ex) {
-                    new PopUp("This SID is not in database.", "Payment fail.").error();
+                } catch (NullPointerException ex) {
                     ex.printStackTrace();
                 }
             }else{
