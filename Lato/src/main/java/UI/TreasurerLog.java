@@ -12,11 +12,11 @@ import java.util.HashMap;
 
 public class TreasurerLog implements ActionListener {
 //    Config ------->
-    private int winW = 1396;
-    private int winH = 885;
+    private int winW = 1000;
+    private int winH = 600;
     private String[] columnName = {
-            "No.",
-            "Name",
+//
+            "Treasurer ID",
             "Particular",
             "Description",
             "Amount",
@@ -52,7 +52,9 @@ public class TreasurerLog implements ActionListener {
         fr.setLayout(new GridLayout(1, 1));
         fr.add(Table_Container);
         fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//        fr.setPreferredSize(new Dimension(winW, winH));
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
+        fr.setPreferredSize(new Dimension(winW, winH));
         fr.setVisible(true);
 //        fr.setResizable(false);
         fr.pack();
@@ -74,7 +76,7 @@ public class TreasurerLog implements ActionListener {
     }
 
     public void addData(String Name, String Particular, String Description, Double Amount, String Timestamp) { // Add Data to Table
-        model.addRow(new Object[] {Table.getRowCount()+1, Name, Particular, Description, Amount, Timestamp});
+        model.addRow(new Object[] {Name, Particular, Description, Amount, Timestamp});
     }
 
     public void preload() { // Preload Data form Database.

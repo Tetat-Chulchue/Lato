@@ -322,7 +322,7 @@ public class TreasurerDashboard implements ActionListener {
                     refresh();
                 } else {
                     // Can't Delete
-                    new PopUp("Student not found","Can't Add").error();
+                    new PopUp("Student not found","Can't Delete").error();
                 }
             }
         }
