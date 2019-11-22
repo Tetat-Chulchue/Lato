@@ -90,7 +90,7 @@ public class Get {
         return null;
     }
 
-    public static HashMap getBySid(String target) {
+    public static HashMap getBySid(String target) throws IndexOutOfBoundsException{
         try {
             ArrayList<HashMap> data = new ArrayList();
             HashMap object = new HashMap();
@@ -108,7 +108,7 @@ public class Get {
                 data.add(object);
             }
             return data.get(0);
-        } catch (IndexOutOfBoundsException | InterruptedException | ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             System.out.println(e);
         }
         return null;
