@@ -3,16 +3,21 @@ package UI;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.WriteBatch;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import com.mycompany.lato.model.Log;
 import com.mycompany.lato.query.Get;
 
+import javax.print.Doc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Pay implements ActionListener {
     private int winW = 491;
@@ -24,8 +29,7 @@ public class Pay implements ActionListener {
             Forms_Panel_Top,
             Forms_Panel_Button,
             Forms_Panel_Top_Left,
-            Forms_Panel_Top_Right
-        ;
+            Forms_Panel_Top_Right;
     private JButton BTN_Confirm, BTN_Cancel;
     private JTextField SID, Amount;
     private JTextArea Description;
@@ -75,7 +79,7 @@ public class Pay implements ActionListener {
         fr.add(BTN_Panel, BorderLayout.SOUTH);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
+        fr.setLocation(dim.width / 2 - winW / 2, dim.height / 2 - winH / 2);
         fr.setPreferredSize(new Dimension(winW, winH));
         fr.setVisible(true);
 //        fr.setResizable(false);
@@ -114,30 +118,66 @@ public class Pay implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        class InvalidAmountException extends Exception {
+            InvalidAmountException () {
+                super("Invalid Amount");
+            }
+        }
+
         if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
 
             String sid = SID.getText();
             String description = Description.getText();
             int amount = Integer.parseInt(Amount.getText());
 
-            boolean confirm = new PopUp("Are you sure", "confirm").question();
+            if (amount <= 0) {
+                new PopUp("Can't make a transaction with a negative number", "Negative Payment").error();
+            } else {
+                boolean confirm = new PopUp("Are you sure", "Confirm").question();
 
-            try {
-                if (confirm) {
-                    HashMap user = Get.getBySid(sid);
-                    double debt = Double.parseDouble((user.get("amount").toString())) - amount;
+                try {
+                    if (confirm) {
+                        HashMap user = Get.getBySid(sid);
+                        double debt = Double.parseDouble((user.get("amount").toString())) - amount;
 
-                    Firestore db = FirestoreClient.getFirestore();
-                    DocumentReference userRef = db.collection("Users").document(String.valueOf(user.get("uuid")));
-                    ApiFuture<WriteResult> future = userRef.update("amount", debt);
-                    new Log(TreasurerLogin.currentUser.getStudentId(), sid, description, amount);
-                    new TreasurerDashboard().init();
-                    fr.dispose();
+                        Firestore db = FirestoreClient.getFirestore();
+                        WriteBatch batch = db.batch();
+
+                        DocumentReference userRef = db.collection("Users").document(String.valueOf(user.get("uuid")));
+                        DocumentReference statisticRef = db.collection("Statistics").document("amount");
+
+                        if (amount > Double.parseDouble((user.get("amount").toString()))) {
+                            throw new InvalidAmountException();
+                        }
+
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+                        batch.update(userRef, "amount", debt);
+                        batch.update(userRef, "updateAt", formatter.format(new Date(System.currentTimeMillis())));
+
+                        Map statistic = Get.getByCollectionAndDocumentName("Statistics", "amount");
+                        double allDebt = Double.parseDouble(statistic.get("debt").toString()) - amount;
+                        double money = Double.parseDouble(statistic.get("money").toString()) + amount;
+
+                        batch.update(statisticRef, "debt", allDebt);
+                        batch.update(statisticRef, "money", money);
+
+                        batch.commit();
+
+                        new Log(TreasurerLogin.currentUser.getStudentId() + " Has been made a payment", sid, description, amount);
+                        new TreasurerDashboard().init();
+                        fr.dispose();
+                    }
+                } catch (IndexOutOfBoundsException ex) {
+                    new PopUp("This SID is not in database.", "SID not found").error();
+                } catch (NullPointerException ex) {
+                    ex.printStackTrace();
+                } catch (NumberFormatException ex) {
+                    new PopUp("Invalid amount", "Invalid amount").error();
+                } catch (InvalidAmountException ex) {
+                    new PopUp("Payment exceed current debt", "Invalid amount").error();
                 }
-            } catch (IndexOutOfBoundsException ex) {
-                new PopUp("This SID is not in database.", "Payment fail.").error();
-                ex.printStackTrace();
             }
+
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
             new TreasurerDashboard().init();
             fr.dispose();
