@@ -75,7 +75,7 @@ public class Update {
             System.out.println("Update time : " + writeResult.get().getUpdateTime());
             new Log(TreasurerLogin.currentUser.getStudentId(), "Update user "+sid, "-",0.0);
             return true;
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (IndexOutOfBoundsException | InterruptedException | ExecutionException e) {
             System.out.println(e);
             return false;
         }

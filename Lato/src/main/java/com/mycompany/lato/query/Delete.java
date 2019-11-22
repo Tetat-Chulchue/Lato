@@ -38,7 +38,7 @@ public class Delete {
 
             Map<String, Object> currentdata = Get.getByCollectionAndDocumentName("Statistics", "amount");
             int student = Integer.parseInt(currentdata.get("student")+"")-1;
-            Update.updateStatistic(Double.parseDouble(currentdata.get("debt")+""), Double.parseDouble(currentdata.get("money")+""), student);
+            Update.updateStatistic(Double.parseDouble(currentdata.get("debt")+"")-Double.parseDouble(user.get("amount")+""), Double.parseDouble(currentdata.get("money")+""), student);
             new Log(TreasurerLogin.currentUser.getStudentId(), "Delete user "+sid, "-",0.0);
             return true;
         } catch (IndexOutOfBoundsException | InterruptedException | ExecutionException ex){

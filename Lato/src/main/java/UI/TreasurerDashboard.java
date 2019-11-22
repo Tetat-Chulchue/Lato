@@ -296,22 +296,34 @@ public class TreasurerDashboard implements ActionListener {
             TreasurerLog UI = new TreasurerLog();
             UI.init();
         } else if (e.getSource().equals(this.BTN_Add)) { //Button Add
-            if(new PopUp("Are you sure", "confirm").question() && Post.addUser(SID_Field.getText(), First_Name_Field.getText(), Last_Name_Field.getText())){
-                //Added
-            } else {
-                // Can't Add
+            if(new PopUp("Are you sure", "confirm").question()){
+                if(Post.addUser(SID_Field.getText(), First_Name_Field.getText(), Last_Name_Field.getText())){
+                    //Added
+                    refresh();
+                } else {
+                    // Can't Add
+                    new PopUp("Already have this student","Can't Add").error();
+                }
             }
         } else if (e.getSource().equals(this.BTN_Update)) { //Button Update
-            if(new PopUp("Are you sure", "confirm").question() && Update.updateUser(SID_Field.getText(), First_Name_Field.getText(), Last_Name_Field.getText())){
-                //Updated
-            } else {
-                // Can't Update
+            if(new PopUp("Are you sure", "confirm").question()){
+                if(Update.updateUser(SID_Field.getText(), First_Name_Field.getText(), Last_Name_Field.getText())){
+                    //Updated
+                    refresh();
+                } else {
+                    // Can't Update
+                    new PopUp("Student not found","Can't Update").error();
+                }
             }
         } else if (e.getSource().equals(this.BTN_Delete)) { //Button Delete
-            if(new PopUp("Are you sure", "confirm").question() && Delete.deleteUser(SID_Field.getText())){
-                //Deleted
-            } else {
-                // Can't Delete
+            if(new PopUp("Are you sure", "confirm").question()){
+                if(Delete.deleteUser(SID_Field.getText())){
+                    //Deleted
+                    refresh();
+                } else {
+                    // Can't Delete
+                    new PopUp("Student not found","Can't Add").error();
+                }
             }
         }
     }
