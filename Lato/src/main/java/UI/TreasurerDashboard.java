@@ -351,11 +351,11 @@ public class TreasurerDashboard implements ActionListener {
         Amount_Debt.setText(currentdata.get("debt") + "");
     }
 
-//    public void refresh() {
-//        int rowCount = model.getRowCount();
-//        for (int i = rowCount - 1; i >= 0; i--) {
-//            model.removeRow(i);
-//        }
-//        preload();
-//    }
+    public void refresh() {
+        int rowCount = model.getRowCount();
+        for (int i = rowCount - 1; i >= 0; i--) {
+            model.removeRow(i);
+        }
+        preload();
+    }
 }

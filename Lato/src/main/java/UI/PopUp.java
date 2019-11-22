@@ -92,9 +92,9 @@ public class PopUp {
                 }
     }
 //
-    public static void main(String[] args) {
-        PopUp UI = new PopUp("test", "test");
-        UI.loading();
-    }
+//    public static void main(String[] args) {
+//        PopUp UI = new PopUp("test", "test");
+//        UI.loading();
+//    }
 // .getRootFrame().dispose();
 }
