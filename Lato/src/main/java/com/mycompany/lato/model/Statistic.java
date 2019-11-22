@@ -11,7 +11,7 @@ public class Statistic {
     private double student;
     private String timestamp;
 
-    public Statistic(double debt, double money, double student) {
+    public Statistic(double debt, double money, int student) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         this.debt = debt;
         this.money = money;

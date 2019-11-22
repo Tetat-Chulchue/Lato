@@ -11,6 +11,7 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 //
 ///**
@@ -25,14 +26,19 @@ public class Delete {
 //        // ...
 //        System.out.println("Update time : " + writeResult.get().getUpdateTime());
 //    }
-    public static boolean deleteUser(String sid) throws InterruptedException, ExecutionException {
+    public static boolean deleteUser(String sid){
         try {
             Firestore db = FirestoreClient.getFirestore();
             HashMap user = Get.getBySid(sid);
+            System.out.println((String)user.get("uuid"));
             ApiFuture<WriteResult> writeResult = db.collection("users").document((String)user.get("uuid")).delete();
             System.out.println("Update time : " + writeResult.get().getUpdateTime());
+
+            Map<String, Object> currentdata = Get.getByCollectionAndDocumentName("Statistics", "amount");
+            int student = Integer.parseInt(currentdata.get("student")+"")-1;
+            Update.updateStatistic(Double.parseDouble(currentdata.get("debt")+""), Double.parseDouble(currentdata.get("money")+""), student);
             return true;
-        } catch (IndexOutOfBoundsException ex){
+        } catch (IndexOutOfBoundsException | InterruptedException | ExecutionException ex){
             return false;
         }
     }

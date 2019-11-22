@@ -39,7 +39,7 @@ public class Update {
         System.out.println("Update time : " + writeResult.get().getUpdateTime());
     }
 
-    public static void updateStatistic(Double debt, Double money, Double student) {
+    public static void updateStatistic(Double debt, Double money, int student) {
         try {
             Firestore db = FirestoreClient.getFirestore();
             SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");

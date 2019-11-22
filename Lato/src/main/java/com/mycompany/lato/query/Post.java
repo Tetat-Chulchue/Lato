@@ -50,7 +50,6 @@ public class Post {
             return false;
         } catch(IndexOutOfBoundsException ex) {
             Firestore db = FirestoreClient.getFirestore();
-
             SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
             Date date = new Date(System.currentTimeMillis());
 
@@ -62,6 +61,10 @@ public class Post {
             data.put("createAt", formatter.format(date));
             data.put("updateAt", formatter.format(date));
             ApiFuture<DocumentReference> addedDocRef = db.collection("Users").add(data);
+
+            Map<String, Object> currentdata = Get.getByCollectionAndDocumentName("Statistics", "amount");
+            int student = Integer.parseInt(currentdata.get("student")+"")+1;
+            Update.updateStatistic(Double.parseDouble(currentdata.get("debt")+""), Double.parseDouble(currentdata.get("money")+""), student);
             return true;
         }
     };
