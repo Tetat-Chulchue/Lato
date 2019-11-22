@@ -1,9 +1,19 @@
 package UI;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.WriteResult;
+import com.google.firebase.cloud.FirestoreClient;
+import com.mycompany.lato.model.Log;
+import com.mycompany.lato.query.Get;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Withdraw implements ActionListener {
     private int winW = 491;
@@ -85,9 +95,38 @@ public class Withdraw implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Firestore db = FirestoreClient.getFirestore();
         if (e.getSource().equals(BTN_Confirm)) { //Button Confirm
-            new TreasurerDashboard().init();
-            fr.dispose();
+            double moneyInput;
+            String description = Description.getText();
+            if (description.equals("")) {
+                description = "-";
+            }
+            try {
+                moneyInput = Double.parseDouble(Amount.getText());
+            } catch (NumberFormatException ex) {
+                new PopUp("Invalid amount", "Invalid amount").error();
+                return;
+            }
+
+            Map<String, Object> getMoney = new Get().getByCollectionAndDocumentName("Statistics", "amount");
+            double getMoneyFormServer = (double) getMoney.get("money");
+
+            if (moneyInput <= 0) {
+                new PopUp("Can't make a transaction with a negative number", "Negative Payment").error();
+            } else if (getMoneyFormServer - moneyInput < 0) {
+                new PopUp("Payment exceed current money", "Invalid amount").error();
+            } else {
+                boolean confirm = new PopUp("Are you sure", "Confirm").question();
+                if (confirm) {
+                    DocumentReference currentAmount = db.collection("Statistics").document("amount");
+                    ApiFuture<WriteResult> writeResult = currentAmount.update("money", getMoneyFormServer - moneyInput);
+
+                    new Log(TreasurerLogin.currentUser.getStudentId(), "Withdraw", description, moneyInput);
+                    new TreasurerDashboard().init();
+                    fr.dispose();
+                }
+            }
         } else if (e.getSource().equals(BTN_Cancel)) { //Button Cancel
             new TreasurerDashboard().init();
             fr.dispose();
