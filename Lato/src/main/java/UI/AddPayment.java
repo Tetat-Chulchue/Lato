@@ -111,7 +111,8 @@ public class AddPayment implements ActionListener {
                 description = Description.getText();
             }
 
-            System.out.println(description);
+//            System.out.println(description);
+
             try{
                 amount = Double.parseDouble(Amount.getText());
             }catch (NumberFormatException ex){
@@ -125,6 +126,9 @@ public class AddPayment implements ActionListener {
                     if (confirm) {
                         Firestore db = FirestoreClient.getFirestore();
                         Date date = new Date(System.currentTimeMillis());
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+                        this.timestamp = formatter.format(new Date(System.currentTimeMillis()));
+
                         Get data = new Get();
                         Get allUsers = new Get();
                         ArrayList rowUserDatas = allUsers.getAll();
@@ -142,7 +146,7 @@ public class AddPayment implements ActionListener {
                             Double alldebt = Double.parseDouble(userdata.get("amount") + "") + amount;
                             DocumentReference allAmount = db.collection("Users").document(String.valueOf(userdata.get("uuid")));
                             ApiFuture<WriteResult> allUpdate = allAmount.update("amount", alldebt);
-                            ApiFuture<WriteResult> writeDate = allAmount.update("updateAt", date);
+                            ApiFuture<WriteResult> writeDate = allAmount.update("updateAt", timestamp);
 //                        System.out.println("After Update : " + userdata);
                         }
 
@@ -151,7 +155,7 @@ public class AddPayment implements ActionListener {
 
                         DocumentReference currentAmount = db.collection("Statistics").document("amount");
                         ApiFuture<WriteResult> writeResult = currentAmount.update("debt", debt);
-                        ApiFuture<WriteResult> writeDate = currentAmount.update("updateAt", date);
+                        ApiFuture<WriteResult> writeDate = currentAmount.update("updateAt", timestamp);
                         new Log(TreasurerLogin.currentUser.getStudentId(), "Add Debt To Every One!", description, amount);
                         new TreasurerDashboard().init();
                         fr.dispose();
