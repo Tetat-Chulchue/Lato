@@ -57,7 +57,7 @@ public class Update {
             System.out.println(e);
         }
     }
-    public static void updateUser(String sid,String firstName, String lastName) {
+    public static boolean updateUser(String sid,String firstName, String lastName) {
         try {
             HashMap user = Get.getBySid(sid);
             Firestore db = FirestoreClient.getFirestore();
@@ -70,8 +70,10 @@ public class Update {
             data.put("updateAt", formatter.format(date));
             ApiFuture<WriteResult> writeResult = db.collection("Users").document((String)user.get("uuid")).set(data, SetOptions.merge());
             System.out.println("Update time : " + writeResult.get().getUpdateTime());
+            return true;
         } catch (InterruptedException | ExecutionException e) {
             System.out.println(e);
+            return false;
         }
     }
 }
