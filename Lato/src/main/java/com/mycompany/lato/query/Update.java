@@ -57,4 +57,21 @@ public class Update {
             System.out.println(e);
         }
     }
+    public static void updateUser(String sid,String firstName, String lastName) {
+        try {
+            HashMap user = Get.getBySid(sid);
+            Firestore db = FirestoreClient.getFirestore();
+            SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+            Date date = new Date(System.currentTimeMillis());
+
+            Map<String, Object> data = new HashMap<>();
+            data.put("firstName", firstName);
+            data.put("lastName", lastName);
+            data.put("updateAt", formatter.format(date));
+            ApiFuture<WriteResult> writeResult = db.collection("Users").document((String)user.get("uuid")).set(data, SetOptions.merge());
+            System.out.println("Update time : " + writeResult.get().getUpdateTime());
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(e);
+        }
+    }
 }
