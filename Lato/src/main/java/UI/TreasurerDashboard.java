@@ -222,7 +222,7 @@ public class TreasurerDashboard implements ActionListener {
         Amount_Student_Text.setFont(new Font("SansSerif", Font.PLAIN, 17));
         Amount_Student_Text.setForeground(new Color(68, 249, 255));
         Amount_Student.setFont(new Font("SansSerif", Font.PLAIN, 35));
-        Amount_Student.setForeground(new Color(255, 145, 100));//
+        Amount_Student.setForeground(new Color(68, 249, 255));//
         Amount_Money_Text.setFont(new Font("SansSerif", Font.PLAIN, 17));
         Amount_Money_Text.setForeground(new Color(68, 249, 255));
         Amount_Money.setFont(new Font("SansSerif", Font.PLAIN, 35));
