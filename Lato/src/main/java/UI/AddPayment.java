@@ -8,7 +8,6 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 import com.mycompany.lato.model.Log;
 import com.mycompany.lato.query.Get;
-import sun.security.krb5.internal.crypto.Des;
 
 import javax.swing.*;
 import java.awt.*;
