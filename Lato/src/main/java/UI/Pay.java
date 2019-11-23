@@ -167,7 +167,7 @@ public class Pay implements ActionListener {
 
                         batch.commit();
 
-                        new Log(TreasurerLogin.currentUser.getStudentId() + " Has been made a payment", sid, description, amount);
+                        new Log(TreasurerLogin.currentUser.getStudentId(), sid + " Has been made a payment.", description, amount);
                         new TreasurerDashboard().init();
                         fr.dispose();
                     }
