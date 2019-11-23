@@ -32,7 +32,7 @@ public class Log implements ActionListener {
     private JButton TestAddData;
 
     public void init() {
-        fr = new JFrame("Treasurer Log");
+        fr = new JFrame("Log");
         Table_Container = new JPanel();
         model = new DefaultTableModel();
         Table = new JTable(model) {
