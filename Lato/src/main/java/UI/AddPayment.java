@@ -33,7 +33,7 @@ public class AddPayment implements ActionListener {
     private String timestamp;
 
     public void init() {
-        fr = new JFrame("Add Payment");
+        fr = new JFrame("Add Debt");
         Forms_Container = new JPanel();
         Forms_Top = new JPanel();
         Forms_Bottom = new JPanel();
