@@ -156,7 +156,7 @@ public class AddPayment implements ActionListener {
                         DocumentReference currentAmount = db.collection("Statistics").document("amount");
                         ApiFuture<WriteResult> writeResult = currentAmount.update("debt", debt);
                         ApiFuture<WriteResult> writeDate = currentAmount.update("updateAt", timestamp);
-                        new Log(TreasurerLogin.currentUser.getStudentId(), "Add Debt To Every One!", description, amount);
+                        new Log(TreasurerLogin.currentUser.getStudentId(), "Add Debt To Everyone!", description, amount);
                         new TreasurerDashboard().init();
                         fr.dispose();
                     }
