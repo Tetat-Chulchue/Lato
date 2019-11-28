@@ -69,11 +69,11 @@ public class UserDashboard implements ActionListener {
         Amount_Money_Panel = new JPanel();
         Amount_Debt_Container = new JPanel();
         Amount_Debt_Panel = new JPanel();
-        Amount_Student_Text = new JLabel("Amount Student");
+        Amount_Student_Text = new JLabel("Number of user(s)");
         Amount_Student = new JLabel("-");
-        Amount_Money_Text = new JLabel("Amount Money");
+        Amount_Money_Text = new JLabel("Money Pool (THB)");
         Amount_Money = new JLabel("-");
-        Amount_Debt_Text = new JLabel("Amount Debt");
+        Amount_Debt_Text = new JLabel("Unpaid Debt (THB)");
         Amount_Debt = new JLabel("-");
 
         BTN_Log = new JButton("Log");
@@ -145,11 +145,8 @@ public class UserDashboard implements ActionListener {
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
-        if (dim.width < winW && dim.height < winH) {
-            fr.setPreferredSize(new Dimension(dim.width-200, dim.height-200));
-        } else {
-            fr.setPreferredSize(new Dimension(winW, winH));
-        }
+        fr.setPreferredSize(new Dimension(winW, winH));
+        fr.setIconImage(new ImageIcon("icon.png").getImage());
         fr.setVisible(true);
 //        fr.setResizable(false);
         fr.pack();

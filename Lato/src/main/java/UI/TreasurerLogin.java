@@ -81,6 +81,7 @@ public class TreasurerLogin implements ActionListener {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
         fr.setPreferredSize(new Dimension(winW, winH));
+        fr.setIconImage(new ImageIcon("icon.png").getImage());
         fr.setVisible(true);
         fr.setResizable(false);
         fr.pack();

@@ -33,7 +33,7 @@ public class AddPayment implements ActionListener {
     private String timestamp;
 
     public void init() {
-        fr = new JFrame("Add Payment");
+        fr = new JFrame("Add Debt");
         Forms_Container = new JPanel();
         Forms_Top = new JPanel();
         Forms_Bottom = new JPanel();
@@ -68,6 +68,7 @@ public class AddPayment implements ActionListener {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
         fr.setPreferredSize(new Dimension(winW, winH));
+        fr.setIconImage(new ImageIcon("icon.png").getImage());
         fr.setResizable(true);
         fr.setVisible(true);
         fr.pack();
