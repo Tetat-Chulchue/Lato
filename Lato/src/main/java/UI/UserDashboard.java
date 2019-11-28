@@ -146,10 +146,11 @@ public class UserDashboard implements ActionListener {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         if (dim.width < winW || dim.height < winH) {
             fr.setPreferredSize(new Dimension(dim.width-200, dim.height-200));
+            fr.setLocation(dim.width/2-(dim.width-200)/2, dim.height/2-(dim.height-200)/2);
         } else {
             fr.setPreferredSize(new Dimension(winW, winH));
+            fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
         }
-        fr.setLocation(dim.width/2-winW/2, dim.height/2-winH/2);
         fr.setIconImage(new ImageIcon("icon.png").getImage());
         fr.setVisible(true);
 //        fr.setResizable(false);
